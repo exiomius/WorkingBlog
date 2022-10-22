@@ -1,0 +1,63 @@
+{
+  "index.qmd": {
+    "index.html": "18517600"
+  },
+  "about.qmd": {
+    "about.html": "365bc952",
+    "about.tex": "a073efa9"
+  },
+  "posts/post-with-code/index.qmd": {
+    "index.html": "0943937a"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "2602e1d8"
+  },
+  "posts/2022-09-15-Lesson1&2Blog.md.ipynb": {
+    "2022-09-15-Lesson1&2Blog.md.html": "7842d9d6"
+  },
+  "posts/2022-09-19-Lesson3Blog.md.ipynb": {
+    "2022-09-19-Lesson3Blog.md.html": "94c46752"
+  },
+  "posts/2022-09-21-Lesson4Blog.md.ipynb": {
+    "2022-09-21-Lesson4Blog.md.html": "aa3f6626"
+  },
+  "posts/2022-09-25-MP1.ipynb": {
+    "2022-09-25-MP1.html": "d447ce84"
+  },
+  "posts/2022-09-25-MP2.ipynb": {
+    "2022-09-25-MP2.html": "4176a6e8"
+  },
+  "posts/2022-09-26-Lesson5Blog.md.ipynb": {
+    "2022-09-26-Lesson5Blog.md.html": "3567dc99"
+  },
+  "posts/2022-09-26-Lesson6Blog.md.ipynb": {
+    "2022-09-26-Lesson6Blog.md.html": "e6a3a547"
+  },
+  "posts/2022-09-27-Lesson10Blog.md.ipynb": {
+    "2022-09-27-Lesson10Blog.md.html": "68c2d958"
+  },
+  "posts/2022-09-27-Lesson7Blog.md.ipynb": {
+    "2022-09-27-Lesson7Blog.md.html": "1fc5ec89"
+  },
+  "posts/2022-09-27-Lesson8Blog.md.ipynb": {
+    "2022-09-27-Lesson8Blog.md.html": "657d854f"
+  },
+  "posts/2022-10-06-MP3.ipynb": {
+    "2022-10-06-MP3.html": "44cc76a3"
+  },
+  "posts/2022-10-11-L9Blog.md.ipynb": {
+    "2022-10-11-L9Blog.md.html": "22479152"
+  },
+  "posts/2022-10-13-MP4.ipynb": {
+    "2022-10-13-MP4.html": "5830064c"
+  },
+  "posts/2022-10-17-CLA1.md.ipynb": {
+    "2022-10-17-CLA1.md.html": "ccb12ffe"
+  },
+  "Test Posts/post-with-code/index.qmd": {
+    "index.html": "35496e07"
+  },
+  "Test Posts/welcome/index.qmd": {
+    "index.html": "c3cb10b7"
+  }
+}

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Adnan Jinnah">
+<meta name="dcterms.date" content="2022-09-27">
+
+<title>RvCode - fast.ai Lesson 8</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">RvCode</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/exiomius/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">fast.ai Lesson 8</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">fastai</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Adnan Jinnah </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 27, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro"><span class="toc-section-number">1</span>  Intro</a></li>
+  <li><a href="#lesson-overview" id="toc-lesson-overview" class="nav-link" data-scroll-target="#lesson-overview"><span class="toc-section-number">2</span>  Lesson Overview</a></li>
+  <li><a href="#the-topics-covered-briefly" id="toc-the-topics-covered-briefly" class="nav-link" data-scroll-target="#the-topics-covered-briefly"><span class="toc-section-number">3</span>  The topics covered, briefly</a></li>
+  <li><a href="#lecture-notes" id="toc-lecture-notes" class="nav-link" data-scroll-target="#lecture-notes"><span class="toc-section-number">4</span>  Lecture Notes</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="toc-section-number">5</span>  Questions</a></li>
+  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links"><span class="toc-section-number">6</span>  Links</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="intro" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Intro</h1>
+<p>8: Convolutions (CNNs)</p>
+</section>
+<section id="lesson-overview" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Lesson Overview</h1>
+<p>This is the last lesson of fast.ai part 1. As of writing, fast.ai part 2 starts next Tuesday, and I have already registered for it. I’m very excited for the second half of the course, and really thankful that things fell right into place with my Masters project so that I can dedicate the time and effort towards taking it seriously.</p>
+<p>This lesson covers embedding matrices like the previous lesson. The emphasis on embedding matrices makes me believe they are quite important. CNNs are also covered, and again like basic neural networks, they end up fundamentally being pleasantly and surprisingly simple. Lastly Jeremy gives some advice about what to do before the second half of the course.</p>
+</section>
+<section id="the-topics-covered-briefly" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> The topics covered, briefly</h1>
+<ul>
+<li>More about embedding matrices: about inference parameters, PCA and embedding distances.</li>
+<li>A combined approach of a dot product model and a neural network is the best for collaborative filtering.</li>
+<li>Transferring the embedding matrix from a neural network to other models can give a nice performance boost.</li>
+<li>How CNNs work for image classification: how convolutions are made with filter matrices, how these filter parameters are found with SGD, what stride is, max/avg pooling, how dropout can improve generalisation.</li>
+<li>Channels refer to both the input data, but also to the number of activations per grid after a convolution. This second definition is also how features and filters are defined.</li>
+<li>What padding is: to avoid losing data on edges.</li>
+<li>What stride is: stride 1 is making the conv layer the same grid size as the previous; stride 2 is skipping over.</li>
+<li>Why we double channels/filters/features after a stride-2 conv layer.</li>
+<li>Refactoring is defining functions for your neural network layers to state its parameters explicitly. E.g. defining a function for convolution layers.</li>
+<li>What is a “receptive field”? The area of the image involved in the calculation of (convolutional) layers.</li>
+<li>Various visualisation plots to understand how the training process is going.</li>
+<li>About learning rates: the benefits and drawbacks of both high and low learning rates. 1cycle and cyclical momentum as smart techniques to modify your learning rate dynamically.</li>
+<li>Why activations near zero are problematic. Most obviously, having a final layer of just 0s has no information and so is useless for classification.</li>
+<li>Batch Normalisation as a technique to lessen the number of activations near zero.</li>
+</ul>
+</section>
+<section id="lecture-notes" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Lecture Notes</h1>
+<ul>
+<li>Jeremy is back to the previous collaborative filtering notebook:</li>
+<li>For the embedding matrix, PyTorch keeps track of neural network parameters/weights for you.</li>
+<li>movie_bias is the interference parameter we created in order to add bias for movies, user_bias is the one we created in order to add bias for users.</li>
+<li>How does our model work? To predict, it trains as normal on the input ratings and output movie ratings, but then we add meaningful interference parameters, movie_bias and user_bias for each movie and user respectively, to adjust with domain specific knowledge. Some movies just everyone likes, so are biased, some users just like every movie, so are biased.</li>
+<li>Visualising embeddings: Plotting a principle component analysis of PCA component 1 and 2, gives a compressed view of how our latent factors affect eachother. It gives us a graph to interpret how the top latent factors are related to eachother. Domain specific knowledge would tell us what there PCA components/inference factors are, and we can try and understand why they relate the way they do.</li>
+<li>Embedding distance: calculate how far apart each embedding vector is from a specific movie, aka how similar each movie is compared to that movie based on the latent factors.</li>
+<li>Using deep learning for collaborative filtering instead: We use a neural net to try and enter the missing values in the matrix.</li>
+<li>We use fast.ai to try and find the embedding matrix side/number of latent variables. Fast.ai does it based on Jeremy’s intuition, there’s not a easy way to know how many we should use, although weight decay might give some leeway in having too many.</li>
+<li>In practice, a combined approach of a neural net and dot product approach is best for collaborative filtering.</li>
+<li>In collaborative filtering, often a small number of users and movies overwealm the rest. For, anime some users watch so much anime compared to other users, and this makes predictions for normal users biased towards predicting for these enthusiastic users. It’s a higher level task to try and resolve this.</li>
+<li>Embedding in NLP: an embedding matrix is just a matrix of latent variables for every word. And as before, the embedding distance calculates the embedding distance between a word and other words, telling us how similar they are based on latent variables.</li>
+<li>For tabular data, using a tabular model/learner for it, creates and uses an embedding matrix.</li>
+<li>Collaborative filtering, NLP, tabular data neural nets, all also use embedding matrices.</li>
+<li>Using embedding, latent variables, may be a substitute to doing a lot of feature engineering.</li>
+<li>Create and train a neural net, take its embeddings and use it with other models like random forests, it can give a nice performance boost. This is akin to letting the neural network find relationships in the data, and using those relationships to boost another model’s performance.</li>
+<li>One latent variable found to help predict retail store sales was distance in real life. Actually the embedding matrix’s distances for that latent variable matched the distances in real life! It managed to learn that real world distance was important for predicting retail sales and reflected that! Latent variables can find amazing relationships about the data!</li>
+<li>Jeremy then goes on to cover how CNNs function:</li>
+<li>Convolutions: A CNN is similar to the neural networks before, but for computer vision they have a particular difference: they can separate out the horizontal and vertical lines of images into convolutions.</li>
+<li>How? It has a filter matrix, say a 3x3 one, and moves around, dot producting and RELUing each 3x3 subset matrix of the original image, producing a smaller image. This is called a convolution.</li>
+<li>Why does this work? Because of the values in the filter. E.g. we used a 3x3 matrix with the top elements = 1, middle elements = 0, bottom = -1. The dot product of this will only give the highest value when there’s horizontal image in the top row, anything in the middle, and no image in the bottom, aka whenever there’s a horizontal part of an image! In vertical parts, the bottom row will cancel out the top and produce 0s, aka the convolution layer will have nothing.</li>
+<li>The 3x3 matrix is called a filter.</li>
+<li>We them use another filter, but this time with two filter matrices, one for our vertical layer and one for our horizontal layer. We do this to combine their features.</li>
+<li>In practice, if we wanted to use a CNN to find the best way to make convolutions to classify an image, we wouldn’t know what filter matrix values to use. Previously we just hard coded for a vertical and horizontal convolution, but we want the CNN to find more complex and useful convolutions.</li>
+<li>The way we find these filter matrix/kernel values is to set them as parameters and use SGD to optimise. In our example, it will find the good kernel parameters and thus convolutions for digit classification.</li>
+<li>Nowadays we do a stride convolution, e.g.&nbsp;stride 2, to skip values of the original image. This reduces the grid size by 2x2. The grid size is not reduced by the kernel size, it is reduced determined by the stride we set.</li>
+<li>When we’re done with stride convolutions, with about a 7x7 image at the end, we do an average pool: we average the final values (called activations).</li>
+<li>A max pool instead finds the max value of each activation rather than averaging them.</li>
+<li>Say we’re trying to identify a picture of a bear. If the bear is a small part of the picture, max pool is much better than avg pool for classification. By checking each end activation for a bear, rather than having one prediction of bear or not bear for all the activations combined, it can spot the bear’s small presence.<br>
+</li>
+<li>Depending on how you want your model to work, you should pick max or avg pool accordingly. fast.ai does this for you, it actually does an average of max/avg pool and tries to find the best for you.</li>
+<li>All the kernel multiplies done for a convolution layer is mathematically equivalent to just one big matrix multiplication.</li>
+<li>Dropout: we can add a dropout mask which can improve generalisation.</li>
+<li>We multiply the mask by our filtered image before we do convolutions to delete parts of it. Higher dropout means the image is harder to see as there is less of it.</li>
+<li>The motivation is as follows: a human is able to look at a image with pieces missing and still classify it. A model should be able to as well. If we use dropout, perhaps it forces the model to learn more fundamental features about our images, more resilient and generalisable ones.</li>
+<li>There are many more activation functions/activations than ReLU, but in practice it doesn’t make a huge difference so it’s not worth working on it too much.</li>
+<li>Jeremy then advices a few things to do before the second half of the course:</li>
+<li>Read the book Meta Learning: How to Learn Deep Learning.</li>
+<li>Watch the videos again and code and experiment as you go.</li>
+<li>Spend time on the forums.</li>
+<li>Get together with others to study together.</li>
+<li>Build projects.</li>
+</ul>
+</section>
+<section id="questions" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Questions</h1>
+<p><strong>What is a “feature”?</strong></p>
+<p>A transformation of the data which is designed to make it easier to model. Feature engineering is just making new transformations. For example, in the titanic dataset, we could make a new feature, the number of family members a person has, and this could help the model’s predictions.</p>
+<p><strong>Write out the convolutional kernel matrix for a top edge detector.</strong></p>
+<p>-pass-</p>
+<p><strong>Write out the mathematical operation applied by a 3×3 kernel to a single pixel in an image.</strong></p>
+<p>I’m confused, a kernel doesn’t apply to a single pixel, a 3x3 kernel is applied to 9 pixels, albeit centered on one. The maths for this is just a dot product.</p>
+<p><strong>What is the value of a convolutional kernel apply to a 3×3 matrix of zeros?</strong></p>
+<p>0</p>
+<p><strong>What is “padding”?</strong></p>
+<p>The sides of the image will have the kernel try and use pixels out of bounds. We don’t want to simply lose these sides, so we apply padding, usually just 0 pixels so the kernel has values to use.</p>
+<p><strong>What is “stride”?</strong></p>
+<p>Stride-1 is just simply applying the kernel to a centered pixel, then moving one pixel away and doing it again. Stride-2 is moving the centered pixel two pixels away every time. Stride-1 is useful to add convolutional layers without changing input size, noting that it’s the stride, not the kernel size, that affects the convolution layer’s dimensions. Stride-2 is useful to decrease the size of our outputs.</p>
+<p><strong>Create a nested list comprehension to complete any task that you choose.</strong></p>
+<p>Nested loops follow the syntax: print(((i for j in range(1,5)) for i in range(1,5))) which is just for j in range(1,5): for i in range (1,5): print(i) print((i for i in list1 for j in list2))</p>
+<p><strong>What are the shapes of the input and weight parameters to PyTorch’s 2D convolution?</strong></p>
+<p>input:: input tensor of shape (minibatch, in_channels, iH, iW) weight:: filters of shape (out_channels, in_channels, kH, kW) iH and iW are just the height and width of the image. kH,kW are just the height and width of the kernel. in_channels and out_channels are just the number of input and output channels.</p>
+<p><strong>What is a “channel”?</strong></p>
+<p>A channel is a single basic colour in an image. RGB images have 3 channels, red green and blue. I imagine a 3 channel image like 3 sets of pixel maps, each for a channel, or one pixel map with 3 separate values we can operate on. However channels don’t just refer to the input data as described, but also to the number of activations per grid after a convolution. This second definition is also how features are defined.</p>
+<p><strong>What is the relationship between a convolution and a matrix -multiplication?</strong></p>
+<p>A convolution mathematically is just a special matrix of the kernel’s values, multiplied by the pixels, with a bias matrix term added. I.E. kM + b</p>
+<p><strong>What is a “convolutional neural network”?</strong></p>
+<p>For a neural network, when we use convolutions instead or in addition to linear layers.</p>
+<p><strong>What is the benefit of refactoring parts of your neural network definition?</strong></p>
+<p>Refactoring is defining functions for your neural network layers to state its parameters explicitly. E.g. defining a function for convolution layers. Refactoring makes it much less likely you’ll accidentally make errors in your architecture and also makes it easier for your user to understand how your layers are constructed.</p>
+<p><strong>What is Flatten? Where does it need to be included in the MNIST CNN? Why?</strong></p>
+<p>The final Conv2d layer has a output tensor shape of 64x2x1x1, but we need to remove the extra 1x1 layer to get 64x2x1, so we use flatten to do so. This is similar to squeeze in PyTorch.</p>
+<p><strong>What does “NCHW” mean?</strong></p>
+<p>Our input’ shape is 64x1x28x28: batch,channel,height,width. Meaning a batch of 64 one channel (colour) images of 28x28. NCHW refers to this.</p>
+<p><strong>Why does the third layer of the MNIST CNN have 7<em>7</em>(1168-16) multiplications?</strong></p>
+<p>The third layer output has the shape 64x16x4x4, so has 16 channels, and so has one bias for each channel. The input shape from the previous layer is 64x8x7x7. For each input pixel (7x7), we multiply by the number of parameters minus the bias weights (1168-16).</p>
+<p><strong>What is a “receptive field”?</strong></p>
+<p>The area of the image involved in the calculation of (convolutional) layers. For example, if we select a pixel on the second convolutional layer, we can see the pixels used to calculate it in the first layer, and then further still the pixels used to calculate those in the original image.</p>
+<p><strong>What is the size of the receptive field of an activation after two stride 2 convolutions? Why?</strong></p>
+<p>Mathematically, if you apply a 3x3 kernel with 2 stride to a 7x7 area, then do it again, you get one pixel left.</p>
+<p><strong>Run conv-example.xlsx yourself and experiment with trace precedents.</strong></p>
+<p>-pass-</p>
+<p><strong>Have a look at Jeremy or Sylvain’s list of recent Twitter “like”s, and see if you find any interesting resources or ideas there.</strong></p>
+<p>Jeremy retweeted a kaggle competition where the top teams and winner used fast.ai for their image classification!</p>
+<p><strong>How is a color image represented as a tensor?</strong></p>
+<p>A rank 3 tensor. e.g.&nbsp;(3, 1000, 846), 3 colour channels, 1000x846 image size. You then can go into the 3 colour channels and print their individual pixel maps.</p>
+<p><strong>How does a convolution work with a color input?</strong></p>
+<p>A convolution takes an image with a certain number of channels, and outputs an image with a different number of channels. For a channel 3 image, we have 3 different kernels, and apply them, then add the result together.</p>
+<p><strong>What method can we use to see that data in DataLoaders?</strong></p>
+<p>dls.show_batch</p>
+<p><strong>Why do we double the number of filters after each stride-2 conv?</strong></p>
+<p>A stride-2 conv halves the grid size from 14x14 to 7x7. Say the original image was 14x14, then the convolution would be only 7x7. We double the number of filters to avoid this. Filters are just channels, also called features. So say we apply stride-2 to a 14x14 3 channel image, we then end up with a 7x7 grid size with 6 channels.</p>
+<p><strong>Why do we use a larger kernel in the first conv with MNIST (with simple_cnn)?</strong></p>
+<p>Neural networks can only create useful features if the number of outputs from them is lower than the number of inputs. It has to condense information to create useful features. That’s why we use a large kernel, because it keeps the number of outputs meaningfully lower than the number of inputs, particularly because if we double the number of filters each time we have a stride-2 layer, we’d be using nine pixels to calculate eight outputs.</p>
+<p><strong>What information does ActivationStats save for each layer?</strong></p>
+<p>It records the mean, standard deviation, and history of the activations for each layer, so that we can look into our model’s training process and improve it.</p>
+<p><strong>How can we access a learner’s callback after training?</strong></p>
+<p>learn.activation_stats.plot_layer_stats(0) prints out useful plots of the first (0) layer for us.</p>
+<p><strong>What are the three statistics plotted by plot_layer_stats? What does the x-axis represent?</strong></p>
+<p>The mean, std, and % of activations with a value near 0. x-axis is just the frequency (number) of activations.</p>
+<p><strong>Why are activations near zero problematic?</strong></p>
+<p>We don’t want activations to be 0 or near it. Multiplying by 0 gives 0, which means if a early layer has some 0 activations then latter values will too. Multiplying by 0 means we have computation occuring that doesn’t do anything. If our final layer is just 0s, then it’s not very useful to classification since it’s just empty.</p>
+<p><strong>What are the upsides and downsides of training with a larger batch size?</strong></p>
+<p>Larger batches have a more accurate gradient to update the loss with, although they also incur fewer batches per epoch, with means the model weights are updated less frequently. The latter can result in slower training, but it depends on your GPU and other factors.</p>
+<p><strong>Why should we avoid using a high learning rate at the start of training?</strong></p>
+<p>Because the initial weights were initialised randomly, a high starting learning rate could result in the training being ruined at the start very quickly by going in a very wrong direction. Also: a lower learning rate throughout would result in ending training at a local minima, while a high learning rate would skip over them.</p>
+<p><strong>What is 1cycle training?</strong></p>
+<p>To avoid the previous problem, we want to start with a low learning rate, but when the training has settled some, we want to increase the learning rate to speed up the training, but near the end we want a low learning rate again to avoid accidentily skipping over loss minima.</p>
+<p>This is where 1cycle training comes in: it splits the learning rate into a warmup and annealing phase. The former starts low and increases to a maximum, and the latter decreases from the maximum back to the lowest.</p>
+<p><strong>What are the benefits of training with a high learning rate?</strong></p>
+<p>A high learning rate trains quickly and can avoid being stuck in local loss minima.</p>
+<p><strong>Why do we want to use a low learning rate at the end of training?</strong></p>
+<p>Because we want to converge on a final loss minima, but a high learning rate would skip over it.</p>
+<p><strong>What is “cyclical momentum”?</strong></p>
+<p>Momentum is when the optimiser goes in the direction of the gradients as usual, but follows the direction of the previous loss updates.</p>
+<p>Cyclical momentum is varying momentum in the opposite direction of the learning rate. When we are at high learning rates, use less momentum, when at low learning rates, use more momentum.</p>
+<p><strong>What callback tracks hyperparameter values during training (along with other information)?</strong></p>
+<p>plot_sched</p>
+<p><strong>What does one column of pixels in the color_dim plot represent?</strong></p>
+<p>Each vertical slice of the color_dim plot, the plot with the colours changing, represents the histogram of activations for a single batch.</p>
+<p>So looking at colour_dim shows us how the activations in the CNN layers shows as training progresses. More specifically, as each vertical line represents the activation histogram for each batch, we see how the activations change after each batch.</p>
+<p><strong>What does “bad training” look like in color_dim? Why?</strong></p>
+<p>Dark blue is bad training, at the start all activations are zero. Yellow is better, as there are near-zero activations instead of just zero. But we see over training it gets better as the colour changes so we have less zero activations! But our training is bad because it oscillates in colour, it doesn’t just get better.</p>
+<p><strong>What trainable parameters does a batch normalization layer contain?</strong></p>
+<p>For our model to work, we need to fix the initial large zero/near-zero activations and maintain not so many during training. Batch normalisation is a solution to this, it has two parameters, gamma and beta to do so.</p>
+<p><strong>What statistics are used to normalize in batch normalization during training? How about during validation?</strong></p>
+<p>During training we normalise the training data with the mean and standard deviation. During validation we instead use the running mean of the stats calculated during training.</p>
+<p><strong>Why do models with batch normalization layers generalize better?</strong></p>
+<p>We’re not entirely sure yet but probably because each batch adds some more randomness to the training process. Each mini-batch will have a somewhat different mean and std from the others, so the activations will be normalised differently each time. Thus we force the model to cope with with variations and it improves generalisability.</p>
+</section>
+<section id="links" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Links</h1>
+<p>The course page for this sessions is https://course.fast.ai/Lessons/lesson8.html, which includes a lecture, notebooks, and a set of questions from the course book.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

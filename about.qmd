@@ -1,0 +1,19 @@
+---
+title: "About"
+image: profileLI.jpg
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/adnanjinnah/
+    - icon: github
+      text: Github
+      href: https://github.com/exiomius
+
+---
+
+Welcome to my website. It’s currently in its early stages and hopefully will become more detailed with time.
+My name is Adnan, I’m a 4th year integrated Masters Physics and Computer Science student at Durham University. 
+Currently I use this site to share blog posts about my various technical projects. 
+They are on the main page, and ordered by category via the sidebar.

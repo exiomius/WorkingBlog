@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Adnan Jinnah">
+<meta name="dcterms.date" content="2022-09-27">
+
+<title>RvCode - fast.ai Lesson 7</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">RvCode</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/exiomius/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">fast.ai Lesson 7</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">fastai</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Adnan Jinnah </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 27, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro"><span class="toc-section-number">1</span>  Intro</a></li>
+  <li><a href="#lesson-overview" id="toc-lesson-overview" class="nav-link" data-scroll-target="#lesson-overview"><span class="toc-section-number">2</span>  Lesson Overview</a></li>
+  <li><a href="#the-topics-covered-briefly" id="toc-the-topics-covered-briefly" class="nav-link" data-scroll-target="#the-topics-covered-briefly"><span class="toc-section-number">3</span>  The topics covered, briefly</a></li>
+  <li><a href="#lecture-notes" id="toc-lecture-notes" class="nav-link" data-scroll-target="#lecture-notes"><span class="toc-section-number">4</span>  Lecture Notes</a>
+  <ul class="collapse">
+  <li><a href="#going-through-road-to-the-top-part-3" id="toc-going-through-road-to-the-top-part-3" class="nav-link" data-scroll-target="#going-through-road-to-the-top-part-3"><span class="toc-section-number">4.1</span>  Going through road to the top, part 3:</a></li>
+  <li><a href="#going-through-road-to-the-top-part-4" id="toc-going-through-road-to-the-top-part-4" class="nav-link" data-scroll-target="#going-through-road-to-the-top-part-4"><span class="toc-section-number">4.2</span>  Going through road to the top, part 4:</a></li>
+  <li><a href="#collaborative-filtering-deep-dive" id="toc-collaborative-filtering-deep-dive" class="nav-link" data-scroll-target="#collaborative-filtering-deep-dive"><span class="toc-section-number">4.3</span>  Collaborative Filtering Deep Dive:</a></li>
+  </ul></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="toc-section-number">5</span>  Questions</a></li>
+  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links"><span class="toc-section-number">6</span>  Links</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="intro" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Intro</h1>
+<p>7: Collaborative Filtering</p>
+</section>
+<section id="lesson-overview" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Lesson Overview</h1>
+<p>This lesson covered some more notebooks about how to tweak models to archive better results, including how to get around GPU memory constraints. It also covers how to make a model to predict multiple values, for example classification of multiple categories. Collaborative filtering is detailed in depth for the textbook chapter.</p>
+</section>
+<section id="the-topics-covered-briefly" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> The topics covered, briefly</h1>
+<ul>
+<li>How to get around GPU memory constraints using gradient accumulation.</li>
+<li>Using ensembles of different architectures.</li>
+<li>How to make a model predict more than one dependent variable.</li>
+<li>Cross entropy loss, mathematically.</li>
+<li>Collaborative filtering: what it is, how to create it from scratch.</li>
+<li>Collaborative filtering and recommender systems.</li>
+<li>Embedding matrices.</li>
+<li>PCA.</li>
+<li>Positive feedback loops.</li>
+<li>The bootstrapping problem.</li>
+<li>Weight decay, avoiding overfitting, loss functions.</li>
+</ul>
+</section>
+<section id="lecture-notes" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Lecture Notes</h1>
+<p>The lecture covers what is inside a neural net and tweaks to the basic neural net we constructed previously.</p>
+<section id="going-through-road-to-the-top-part-3" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="going-through-road-to-the-top-part-3"><span class="header-section-number">4.1</span> <a href="https://www.kaggle.com/code/jhoward/scaling-up-road-to-the-top-part-3">Going through road to the top, part 3</a>:</h2>
+<ul>
+<li>A larger model has more parameters so can find more features, but the problem is that it takes GPU memory that isn’t as flexible as CPU memory.</li>
+<li>How to use as large a model as you like without worrying about memory. For example, Kaggle has 16Gb GPUs.</li>
+<li>You can first find out how much memory a model uses. What’s important is that training for longer does not actually require more GPU memory.</li>
+<li>Gradient accumulation is how: Run smaller batch sizes, but modify them as to act and train as if we were using the same normal batch size for all the training data.</li>
+<li>Gradient accumulation results are identical to using a higher memory GPU for certain models. It is for convText and Transformers (NLP). If a model uses batch normalisation, then it won’t exactly, it will have different results, but probably still good ones.</li>
+<li>Pick a batch size that fits your GPU memory, and generally higher and a multiple of 8 is better. Generally (not always) if you double batch size, half your learning rate.</li>
+<li>We can use ensembles of good models of different architectures, and get even better results. Furthermore, we can add in bagging too to train them on different sets of the training data.</li>
+<li>At the start it may feel random as to why certain approaches/models are better, but over time as you develop intuition, it will feel be less random and more systematic.</li>
+<li>Generally, it makes sense to iterate on small models then switch to large models, but there’s a better way of ensuring this performance converts correctly. This is covered in the second course.</li>
+</ul>
+</section>
+<section id="going-through-road-to-the-top-part-4" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="going-through-road-to-the-top-part-4"><span class="header-section-number">4.2</span> <a href="https://www.kaggle.com/code/jhoward/multi-target-road-to-the-top-part-4">Going through road to the top, part 4</a>:</h2>
+<ul>
+<li>We want a model to now predict two things instead of one I.E, two dependent variables instead of one. E.g. from a rice photo, the type of rice (10 types) and the disease it may have (10 types), so there are 20 categories.</li>
+<li>This requires an understanding of making custom loss functions and a deeper look into how cross entropy loss works.</li>
+<li>Make a learner just for the first dependent variable, disease, and create a specific metric function for it.</li>
+<li>Cross entropy loss: Jeremy states it is really important to understand and so goes into the maths using a separate excel sheet. He tries to predict if a image is a cat,dog,plane,fish or building, so there are 5 classification categories. It outputs 5 numbers (relating to probabilities of each category). CEL first finds the softmax value for each of them. Then it compares the actual value (1 for the correct category, 0 for not) to the softmax value for each category. It multiplies the log of the probability prediction for the correct category by the actual value.</li>
+<li>Further info: https://chris-said.io/2020/12/26/two-things-that-confused-me-about-cross-entropy/</li>
+<li>Binary cross entropy is just cross entropy for 1 category: is a cat or not. Careful here, it’s not for 2 categories e.g.&nbsp;cat or dog.</li>
+<li>The loss functions in our python environment has two types. The F function type and the nn class type. The latter has more parameters to play with.</li>
+<li>Change the last node outputs to be the number of categories predicted instead of the usual 1 for classification.</li>
+<li>You encode the loss function for the model to know what/how many categories to predict. You sum loss functions for multiple category types and their sub categories.</li>
+<li>This new model, that can predict 20 categories, actually is better than a model that just predicts disease type! This is because the training to do other types of predictions helps. Sometimes this approach is better, sometimes not!</li>
+</ul>
+</section>
+<section id="collaborative-filtering-deep-dive" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="collaborative-filtering-deep-dive"><span class="header-section-number">4.3</span> <a href="https://www.kaggle.com/code/jhoward/collaborative-filtering-deep-dive/notebook">Collaborative Filtering Deep Dive</a>:</h2>
+<ul>
+<li>Collaborative filtering is a key part of recommender systems.</li>
+<li>We use the Movielens dataset of movie ratings with 3 columns: UserID, MovieID, and rating.</li>
+<li>Imagine a matrix of the users and their movie ratings. There are missing values for unrated/unseen movies. Collaborative filtering is just trying to fill in these missing values to complete the matrix.</li>
+<li>The problem is predicting how a user will rate an unrated movie for them. We want to match up the user’s movie preferences with the movie’s features to predict this.</li>
+<li>But we don’t know their preferences and the movie features, these are called latent variables. We only have their ID, their previous ratings, and those of other users. We can however infer a user’s preferences and a movie’s features from this data.</li>
+<li>Let’s assume there are 5 latent factors, say like for a movie, it’s genre, length etc, we don’t set these, we calculate them and then can try and interpret what they are.</li>
+<li>On choosing the number of latent factors, its hard. Fast.ai has a function to calculate this based on Jeremy’s intuition, but you can play around too.</li>
+<li>Use SGD to optimise these latent factors after we set a loss function.</li>
+<li>What is embedding? Just looking something up in an array. An embedding matrix is the array that is looked up. Matrix multiplication in an embedding matrix is the same as looking up index values in a list say as a function in excel. Think about a dot product with a one-hot encoded vector, it just returns the value you’re looking up.</li>
+<li>We then cover how to create a collaborative filtering model from scratch using python, PyTorch class definition, and features.</li>
+<li>We create a DotProduct class to define embeddings and looking up values for UserIDs and MovieIDs.</li>
+<li>Some of our user rating predictions can greater than 5, the maximum. Take our predictions and squish them with a sigmoid to fix this.</li>
+<li>We noticed that some users just relates all movies highly, while some users have a range of ratings. Let’s incorporate this into our model predictions. To do so, we make another inference variable, a movie bias and a user bias, reflecting that for movies, they tend to be especially related well or badly, and that for some users, they can rate all movies generally as good or bad.</li>
+<li>It’s not covered, but I think we could try and cluster users instead to try and incorporate user and movie types/preferences?</li>
+<li>We can use L2 regularisation (weight decay), to avoid overfitting. This adds the sum of the square of the weights to the loss function. This also solves the issue of having useless interfered variables, because they won’t contribute. I suppose this makes getting the exact number of inference variables less important.</li>
+<li>In fast.ai, usually defaults are good, but for tabular data, it’s hard to know good defaults, so it’s good to test yourself.</li>
+</ul>
+</section>
+</section>
+<section id="questions" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Questions</h1>
+<p>The questions from now on will be a part of the blog post rather than uploaded to the lesson’s GitHub repo.</p>
+<p><strong>What problem does collaborative filtering solve?</strong></p>
+<p>If you had a matrix of users and their ratings of movies, there are unrated movies so empty spaces. Collaborative filtering attempts to make predictions to fill these spaces.</p>
+<p><strong>How does it solve it?</strong></p>
+<p>It uses the data we have to create/infer latent variables, like movie genre or user preferences, to use to predict.</p>
+<p><strong>Why might a collaborative filtering predictive model fail to be a very useful recommendation system?</strong></p>
+<p>A recommendation system might be better if it could tell users why they are being recommended certain movies. If we find it difficult to understand what the latent variables mean, this could be hard. The system also can’t act as fluidly as a human and recommend things with incredible movie domain and user preference knowledge. For example, if I asked at a bookstore for a recommendation, they could cater very well to my individual preferences and find a niche great book for me. A collab filtering model could struggle to do this, even with many interference variables.</p>
+<p><strong>What does a crosstab representation of collaborative filtering data look like?</strong></p>
+<p>We first show the matrix of userID and movieID detailing the user ratings. Then behind userID and movieID, we show all the values of our latent variables for them. In our example, 5. This is a neat view of for each prediction, the userID and movieID for it, and the 10 total latent variables for it. As we train our model, we can see both the prediction and 10 latent variables change. We use SGD to optimise as usual.</p>
+<p><strong>Write the code to create a crosstab representation of the MovieLens data (you might need to do some web searching!)</strong></p>
+<p>-pass-</p>
+<p><strong>What is a latent factor? Why is it “latent”?</strong></p>
+<p>A latent factor/variable is a factor not present in the dataset that we infer in order to aid predictions. It’s latent because we have to infer it from the data.</p>
+<p><strong>What is a dot product? Calculate a dot product manually using pure Python with lists.</strong></p>
+<p>A dot product is just multiplying each element in a matrix together and adding them up. e.g.&nbsp;(1,2,3).(1,2,3) = 1 + 4 + 9 = 14.</p>
+<p><strong>What does pandas.DataFrame.merge do?</strong></p>
+<p>We can merge two columns together if we want. In this case, as humans we want to see not just movieIDs but their titles.</p>
+<p><strong>What is an embedding matrix?</strong></p>
+<p>It’s actually not so complicated or scary. An embedding matrix is just a matrix we multiply a one-hot-encoded matrix with. Say we have a one-hot-encoded matrix, if we dot product it with an embedding matrix, it will only return the values we want. Essentially, this is just a quick way to look up values in the embedding matrix. The embedding matrix itself contains the user latent factors and the movie latent factors.</p>
+<p>In concrete terms, say we want to make a prediction for user 32’s rating of movie 45. We get make a one-hot-encoded vector and dot product it by the embedding matrix to get user 32’s latent factors and movie 45’s latent factors. Then with our latent factors, we can make our prediction.</p>
+<p><strong>What is the relationship between an embedding and a matrix of one-hot-encoded vectors?</strong></p>
+<p>Explained previously. The one-hot-encoded vector simply picks out which embedding matrix values to access/look up.</p>
+<p><strong>Why do we need Embedding if we could use one-hot-encoded vectors for the same thing?</strong></p>
+<p>It uses a lot more memory and time.</p>
+<p><strong>What does an embedding contain before we start training (assuming we’re not using a pretrained model)?</strong></p>
+<p>They are initialised to random values, so nothing. Just like weights in any model, after training they are more meaningful. After training, they represent something about inference factors and predictions. In NLP, between words’ relationships to eachother.</p>
+<p><strong>Create a class (without peeking, if possible!) and use it.</strong></p>
+<p>-pass-</p>
+<p><strong>What does x[:,0] return?</strong></p>
+<p>The first column.</p>
+<p><strong>Rewrite the DotProduct class (without peeking, if possible!) and train a model with it.</strong></p>
+<p>-pass-</p>
+<p><strong>What is a good loss function to use for MovieLens? Why?</strong></p>
+<p>Movielens contains movie ID, user ID, and numeric ratings. We use MSELossFlat as our loss function.</p>
+<p>It’s fine to use MSE for classification. In fact, there for classification, cross-entropy and MSE can sidegrades to eachother. https://stats.stackexchange.com/questions/568238/disadvantages-of-using-a-regression-loss-function-in-multi-class-classification</p>
+<p>But we are not doing classification, we are doing regression as our prediction is 1-5. For regression, MSE is better suited, but cross-entropy is faster when predictions vary significantly. https://rohanvarma.me/Loss-Functions/</p>
+<p><strong>What would happen if we used cross-entropy loss with MovieLens? How would we need to change the model?</strong></p>
+<p>-pass-</p>
+<p><strong>What is the use of bias in a dot product model</strong></p>
+<p>To encode extra information about the problem, in our case, the fact that some users rate really highly or lowly, and some movies are generally really well rated or badly rated.</p>
+<p><strong>What is another name for weight decay?</strong></p>
+<p>L2 regularization</p>
+<p><strong>Write the equation for weight decay (without peeking!).</strong></p>
+<p>Add a wd*(w^2) to the loss function, where wd is weight decay, a parameter just to control how much we dislike large weights.</p>
+<p><strong>Write the equation for the gradient of weight decay. Why does it help reduce weights?</strong></p>
+<p>add a wd*(w^2) to the loss function, where wd is weight decay. It penalises large weights, because as we try and lower loss, the weight decay term will be large if the weight is too high.</p>
+<p><strong>Why does reducing weights lead to better generalization?</strong></p>
+<p>Because larger weights are associated with a more complex total loss function. For instance, large weights results in a very sharp curve with many edges going to specific data points. Having lower weights corresponds to having a more gradual curve that is less overfitted to specific data points.</p>
+<p><strong>What does argsort do in PyTorch?</strong></p>
+<p>It can give us the elements with the largest or smallest values of a column we want. In our example, for movie_bias, we can easily see the movies with the lowest biases after training.</p>
+<p><strong>Does sorting the movie biases give the same result as averaging overall movie ratings by movie? Why/why not?</strong></p>
+<p>No.&nbsp;Specifically looking into the sorted movie biases tells us specific information we can interpret. In our case, the movies with the lowest biases are the movies that people tend not to like even if it’s something that they’d normally enjoy (something that matches their preferences). This is because these movies’ latent factors (genre, etc) match the users’ latent factors (preferences) but still have very little movie bias. A higher movie bias tells us that users regardless of movie and user latent factors rate that movie highly, so a small movie bias tells us that users rate that movie badly, regardless of how well the movie and user latent factors match.</p>
+<p><strong>How do you print the names and details of the layers in a model?</strong></p>
+<p>learn.model</p>
+<p><strong>Extra: What is PCA?</strong></p>
+<p>Principal component analysis is a technique to interpret embedding matrices. For humans its hard to understand latent factors, so this helps. We can plot a graph of the strongest PCA components, which are like latent variables, for the movies. And then looking at it, as humans we can try and infer what these PCA components mean, and why they are so valuable for predictions. It’s amazing, since it can discover things about the data with no help.</p>
+<p><strong>What is the “bootstrapping problem” in collaborative filtering?</strong></p>
+<p>The extreme case, when we have no users and so no data, what do we recommend to the first user? Or even if we have many users, how do we recommend a new product to them?</p>
+<p><strong>How could you deal with the bootstrapping problem for new users? For new movies?</strong></p>
+<p>We can ask new users about their preferences and create a separate model that tries to predict their embedding vector based on this.</p>
+<p><strong>How can feedback loops impact collaborative filtering systems?</strong></p>
+<p>Say a small number of dedicated users really like anime. They only watch it rather than other genres, and always rate it. This tunes the recommendation system to recommend more anime, which in turn makes other existing users watch anime, makes users who don’t like anime leave, and attracts new users who like anime. This causes a feedback loop and can make the original purpose of the website change.</p>
+<p><strong>When using a neural network in collaborative filtering, why can we have different numbers of factors for movies and users?</strong></p>
+<p>In our previous non deep learning model, we took the dot product to use embeddings. But in DL we don’t use the dot product, we use a different way. We take the results of the previous embedding lookup and concatenate its activations.</p>
+<p><strong>Why is there an nn.Sequential in the CollabNN model?</strong></p>
+<p>In order to create our neural network layers in the order we want.</p>
+<p><strong>What kind of model should we use if we want to add metadata about users and items, or information such as date and time, to a collaborative filtering model?</strong></p>
+<p>A deep learning model. Our collaborative filtering model dot product approach is hardcoded to only be able to use userID, movieID, ratings, latent variables, and biases. A DL model, or TabularModel, can incorporate more information, however as the next lesson discusses, there are advantages and disadvantages to both.</p>
+</section>
+<section id="links" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Links</h1>
+<p>The course page for this sessions is https://course.fast.ai/Lessons/lesson7.html, which includes a lecture, notebooks, and a set of questions from the course book.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

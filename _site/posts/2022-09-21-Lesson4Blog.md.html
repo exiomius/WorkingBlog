@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Adnan Jinnah">
+<meta name="dcterms.date" content="2022-09-21">
+
+<title>RvCode - fast.ai Lesson 4</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">RvCode</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/exiomius/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">fast.ai Lesson 4</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">fastai</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Adnan Jinnah </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 21, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro"><span class="toc-section-number">1</span>  Intro</a></li>
+  <li><a href="#lesson-overview" id="toc-lesson-overview" class="nav-link" data-scroll-target="#lesson-overview"><span class="toc-section-number">2</span>  Lesson Overview</a></li>
+  <li><a href="#notebooks-covered" id="toc-notebooks-covered" class="nav-link" data-scroll-target="#notebooks-covered"><span class="toc-section-number">3</span>  Notebooks covered</a>
+  <ul class="collapse">
+  <li><a href="#getting-started-with-nlp-for-absolute-beginners-covers" id="toc-getting-started-with-nlp-for-absolute-beginners-covers" class="nav-link" data-scroll-target="#getting-started-with-nlp-for-absolute-beginners-covers"><span class="toc-section-number">3.1</span>  “Getting started with NLP for absolute beginners” covers:</a></li>
+  <li><a href="#iterate-like-a-grandmaster-covers" id="toc-iterate-like-a-grandmaster-covers" class="nav-link" data-scroll-target="#iterate-like-a-grandmaster-covers"><span class="toc-section-number">3.2</span>  “Iterate like a grandmaster!” covers:</a></li>
+  </ul></li>
+  <li><a href="#a-subset-of-this-chapters-questions-and-my-shortened-answers-are-as-follows" id="toc-a-subset-of-this-chapters-questions-and-my-shortened-answers-are-as-follows" class="nav-link" data-scroll-target="#a-subset-of-this-chapters-questions-and-my-shortened-answers-are-as-follows"><span class="toc-section-number">4</span>  A subset of this chapter’s questions and my shortened answers are as follows:</a></li>
+  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links"><span class="toc-section-number">5</span>  Links</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="intro" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Intro</h1>
+<p>4: Natural Language (NLP)</p>
+</section>
+<section id="lesson-overview" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Lesson Overview</h1>
+<p>This lesson was an introduction to natural language processing (NLP). NLP includes tasks such as text classification (e.g.&nbsp;positive or negative sentiment) and text generation (creating new text from a prompt). It appears to be an immensely growing field and as a result certain modules are struggling to keep up to date with the state-of-the-art. A new technique called transformers has recently become popular, and FastAI’s library for example has not been updated with its functionality yet, despite the authors working on it. As a result, this lesson’s lecture and notebooks covers HuggingFace’s transformer module, while the textbook still uses the older FastAI methods.</p>
+<p>This dilemma reflects a common issue with growing fields. As the state-of-the-art changes so quickly, one must take care to be flexible and be comfortable with learning many modules and ways of doing things. It doesn’t seem to bad however, because the fundamentals behind the techniques are still not often changed, so learning it once properly will make learning newer techniques quick. Furthermore, updated modules often have really good documentation, tutorials and discussions available. HuggingFace seems to have some brilliant transformer documentation across their webpages and GitHub. Lastly, this ‘dilemma’ actually might be pretty entertaining. Seeing your field grow with changes and improvements and having to learn about them may keep working pretty interesting. In a way it is like also having to be wear the hat of an academic as a part of your usual job role. The variation could be fun.</p>
+</section>
+<section id="notebooks-covered" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Notebooks covered</h1>
+<p>This lesson covered two notebooks,<a href="https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners">Getting started with NLP for absolute beginners</a> and <a href="https://www.kaggle.com/code/jhoward/iterate-like-a-grandmaster/notebook">Iterate like a grandmaster!</a></p>
+<section id="getting-started-with-nlp-for-absolute-beginners-covers" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="getting-started-with-nlp-for-absolute-beginners-covers"><span class="header-section-number">3.1</span> “Getting started with NLP for absolute beginners” covers:</h2>
+<ul>
+<li>How to use Kaggle. Including how to use Kaggle datasets on your own PC and how to submit entries to their competitions.</li>
+<li>How to use Pandas and Transformers DataFrames to view data, and get it into the correct format for NLP model training.</li>
+<li>How to use Transformers to train and classify.</li>
+<li>The difference between training, validation, and testing data. An emphasis has been put on creating good validation data with a quote by Dr Rachel Thomas stating that often a poorly chosen validation dataset results in a disconnect between development and deployment performance. Her <a href="https://www.fast.ai/posts/2017-11-13-validation-sets.html">article</a> describes this in more detail.</li>
+<li>Training data is to train. Validation data is get an idea of generalizable performance, but often it is limited in doing so. This is often either because it hasn’t been chosen prudently enough or because one has accidentally overfitted to it. Imagine a model to predict the price of a stock. Randomly selecting points to be validation data is poor because that is not how the model will be used in practice and is a much easier task. Selecting some amount of further price movement to be validation data makes sense, but your model may overfit to the specific movement pattern of that timeframe.</li>
+<li>The Pearson Correlation Coefficient, r, as a metric is discussed. Emphasis is put on firstly trying metrics on datasets to understand them, rather than delving immediately into the maths. Doing so for example yielding the fact that r is really sensitive to outliers.</li>
+<li>On outliers. Outliers are important parts of the data and mustn’t be removed without reason. In our housing income and average number of rooms correlation example, there are outliers that could lead to some insights about the data. Perhaps the outliers are from a specific type of house or a specific geographical area. In this case, it may make more sense to use separate models to train on and predict separate clusters of data.</li>
+<li>On hyperparameters. Learning rate is the most important in this case. The idea is to find the largest value that doesn’t result in failed training. FastAI provides a learning rate finder to help you, but Transformers does not.</li>
+</ul>
+</section>
+<section id="iterate-like-a-grandmaster-covers" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="iterate-like-a-grandmaster-covers"><span class="header-section-number">3.2</span> “Iterate like a grandmaster!” covers:</h2>
+<ul>
+<li>How a grandmaster Kaggle competitor works. He focused on creating an effective validation set and iterating rapidly to find changes which improve validation set results. These skills carry over to real projects.</li>
+<li>For the patent classification, the input is anchor and label is target. In the test data, there are anchors not present in the training data. Thus we should make sure there are anchors in the validation data that are not in the training data.</li>
+<li>Pick a learning rate and batch size that fits your GPU. This means picking them so that we can iterate rapidly to test things out.</li>
+<li>Pick a reasonable weight decay.</li>
+<li>Pick a small number of epochs, like 3, to test with. This is because in practice much of the performance will be made in those. Thus there is no need to run many epochs every time you try a change. If there is not improvement within a few epochs, then your change is likely not very significant. Later on, when you want to more thoroughly evaluate a change, you can use more epochs and cross-validation.</li>
+<li>Pick a class to setup your arguments for your trainer. Transformers by default uses one, but FastAI has others.</li>
+<li>You need a stable validation accuracy from your epochs to know whether your future changes is making improvements. To know whether your predictions are stable, run the model from scratch a few times, say 3, and check how much it varies.</li>
+<li>To make changes easier, create a function to setup tokenization and a function to setup model creation. Then you can pass parameters quickly to create new models.</li>
+<li>In this case, previously we tokenised with a special token sep to indicate seperate entities in our input. Simply changing sep to s resulting in a big performance increase.</li>
+<li>Instead of using the same special token to indicate separate entities in our input, using different special tokens for each entity could better inform the model that each entity is different.</li>
+<li>Simply changing all text to lowercase can often help a little too.</li>
+<li>There’s so many things you could try. In this notebook, most of the iteration was done by changing tokenisation, but also playing around with the other parameters might yield better results. However, instead of trying to optimise the factors already present, there are other ideas you can try. Firstly fine tuning your general language model using just patent data. Or using a model pretrained on legal vocabulary instead of general vocabulary. Using a different type of model, not in terms of architecture but a model created for a different task. One of our columns is ‘context’, which is a code e.g.&nbsp;B7 referring to a patent context. Instead of using the code, we could replace it with a description found online. There’s so many things you can try especially if you think a little creatively.</li>
+<li>Remember for the final submission, to train on your validation data as well.</li>
+</ul>
+</section>
+</section>
+<section id="a-subset-of-this-chapters-questions-and-my-shortened-answers-are-as-follows" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> A subset of this chapter’s questions and my shortened answers are as follows:</h1>
+<ul>
+<li>What is self-supervised learning? When you don’t use labeled data. You make the model divide the data into input and label itself. Self-supervised learning is often used to train models to be used as a transfer model for a different task such as classification.</li>
+<li>What is a language model? A model trained to predict the next word of an input text.</li>
+<li>Why do we fine-tune language models? Because the pretrained model wouldn’t have had specifically been calibrated for your specific task.</li>
+<li>What is Universal Language Model Fine-Tuning? It is an approach to NLP including transfer models. In order: Find/train a general language model, transfer/fine tune it to make a task specific language model, transfer/fine tune it to make a final model for the task at hand.</li>
+<li>How does one need to prepare their data for a language model? Tokenisation, Numericalization and DataLoading must be done.</li>
+<li>What is Tokenisation? Tokenisation: Convert the text into a list of words/characters/substrings. The way you do this has to the same throughout all the models you use. If you grab a model online, you have to tokenise your models in the same way.</li>
+<li>What is Numericalization? Numericalization: First make a vocab list/dictionary of all the words used in the dataset. They will all be given unique numbers to identify them. Then convert the tokenised text into a list of these numbers.</li>
+<li>What is DataLoading? In FastAI LMDataLoader automatically sets the last token in a sequence as a label, as well as other important data preparation processes.</li>
+<li>Many details about tokenisation are discussed including special characters, rules, and repeated characters.</li>
+<li>Why would a model tokenise some words as ‘unknown’? Because there is a limit to the number of words/tokens the vocab list/embedding matrix contains.</li>
+<li>Why is padding needed for text classification but not language modeling? Because PyTorch’s DataLoader(s) uses tensors that can only store elements of the same type and size. In text classification, the text/documents in tensors are of varying size. In language modeling, they are not.</li>
+<li>What is an embedding matrix? I need to spend more time on this because it is a little complicated. It contains a list of vector representations of all the tokens present in the vocab list.</li>
+<li>What is perplexity? A performance metric used for judge NLP models.</li>
+<li>What is gradual unfreezing? It’s a way of training a model. It is unfreezing one layer at a time. Unfreeze a layer, then training that layer’s parameters, then unfreezing another layer and then train, etc until all layers are unfrozen.</li>
+<li>Why is text generation always likely to be ahead of automatic identification of machine-generated texts? Because classifier identification models can be used to create better generation models. And in a way by definition, a better classifier model can only be trained on a better generation model after it has already been released online.</li>
+</ul>
+</section>
+<section id="links" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Links</h1>
+<p>The course page for this sessions is https://course.fast.ai/Lessons/lesson4.html, which includes a lecture, notebooks, and a set of questions from the course book. My answers can be found on my github repository at https://github.com/exiomius/PDL-Lesson-4</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

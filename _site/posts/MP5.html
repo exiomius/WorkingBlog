@@ -159,15 +159,23 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#by-other-generation-methods" id="toc-by-other-generation-methods" class="nav-link" data-scroll-target="#by-other-generation-methods"><span class="toc-section-number">5.2</span>  By other generation methods:</a></li>
   </ul></li>
-  <li><a href="#stereo-data-as-a-novel-approach" id="toc-stereo-data-as-a-novel-approach" class="nav-link" data-scroll-target="#stereo-data-as-a-novel-approach"><span class="toc-section-number">6</span>  Stereo data as a novel approach</a></li>
+  <li><a href="#stereo-data-as-a-novel-approach" id="toc-stereo-data-as-a-novel-approach" class="nav-link" data-scroll-target="#stereo-data-as-a-novel-approach"><span class="toc-section-number">6</span>  Stereo data as a novel approach</a>
+  <ul class="collapse">
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation"><span class="toc-section-number">6.1</span>  Motivation</a></li>
+  <li><a href="#stereo-data-availability" id="toc-stereo-data-availability" class="nav-link" data-scroll-target="#stereo-data-availability"><span class="toc-section-number">6.2</span>  Stereo Data Availability</a></li>
+  <li><a href="#papers" id="toc-papers" class="nav-link" data-scroll-target="#papers"><span class="toc-section-number">6.3</span>  Papers</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="toc-section-number">6.4</span>  Conclusion</a></li>
+  <li><a href="#biosciences-recordings" id="toc-biosciences-recordings" class="nav-link" data-scroll-target="#biosciences-recordings"><span class="toc-section-number">6.5</span>  Biosciences recordings</a></li>
+  </ul></li>
   <li><a href="#unknown-yet-approaches" id="toc-unknown-yet-approaches" class="nav-link" data-scroll-target="#unknown-yet-approaches"><span class="toc-section-number">7</span>  Unknown yet Approaches</a></li>
   <li><a href="#work-done" id="toc-work-done" class="nav-link" data-scroll-target="#work-done"><span class="toc-section-number">8</span>  Work done</a>
   <ul class="collapse">
   <li><a href="#papers-about-birdclef-competitions" id="toc-papers-about-birdclef-competitions" class="nav-link" data-scroll-target="#papers-about-birdclef-competitions"><span class="toc-section-number">8.1</span>  Papers about BirdCLEF competitions</a></li>
-  <li><a href="#updated-and-fixed-blog" id="toc-updated-and-fixed-blog" class="nav-link" data-scroll-target="#updated-and-fixed-blog"><span class="toc-section-number">8.2</span>  Updated and Fixed blog</a></li>
-  <li><a href="#investigated-durham-computation-lending" id="toc-investigated-durham-computation-lending" class="nav-link" data-scroll-target="#investigated-durham-computation-lending"><span class="toc-section-number">8.3</span>  Investigated Durham Computation Lending</a></li>
-  <li><a href="#found-yet-more-datasets" id="toc-found-yet-more-datasets" class="nav-link" data-scroll-target="#found-yet-more-datasets"><span class="toc-section-number">8.4</span>  Found yet more datasets</a></li>
-  <li><a href="#found-another-another-thesis" id="toc-found-another-another-thesis" class="nav-link" data-scroll-target="#found-another-another-thesis"><span class="toc-section-number">8.5</span>  Found another another thesis</a></li>
+  <li><a href="#finished-fast.ai-lesson-10" id="toc-finished-fast.ai-lesson-10" class="nav-link" data-scroll-target="#finished-fast.ai-lesson-10"><span class="toc-section-number">8.2</span>  Finished fast.ai lesson 10</a></li>
+  <li><a href="#updated-and-fixed-blog" id="toc-updated-and-fixed-blog" class="nav-link" data-scroll-target="#updated-and-fixed-blog"><span class="toc-section-number">8.3</span>  Updated and Fixed blog</a></li>
+  <li><a href="#investigated-durham-uni-supercomputers" id="toc-investigated-durham-uni-supercomputers" class="nav-link" data-scroll-target="#investigated-durham-uni-supercomputers"><span class="toc-section-number">8.4</span>  Investigated Durham Uni Supercomputers</a></li>
+  <li><a href="#found-yet-more-datasets" id="toc-found-yet-more-datasets" class="nav-link" data-scroll-target="#found-yet-more-datasets"><span class="toc-section-number">8.5</span>  Found yet more datasets</a></li>
+  <li><a href="#found-another-another-thesis" id="toc-found-another-another-thesis" class="nav-link" data-scroll-target="#found-another-another-thesis"><span class="toc-section-number">8.6</span>  Found another another thesis</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -274,7 +282,48 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="stereo-data-as-a-novel-approach" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Stereo data as a novel approach</h1>
-<p>Last week with Stuart and Robert, we discussed using stereo data as our novel approach to the cocktail problem. Whether it is a novel approach and untried is going to take some research online to see if others have already tried this.</p>
+<p>Last week with Stuart and Robert, we discussed using stereo data as our novel approach to the cocktail problem. Whether it is indeed a novel approach and untried is going to take some research online to see if others have already tried this.</p>
+<section id="motivation" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">6.1</span> Motivation</h2>
+<p>The paper (likely outdated, 2017) Multi-band Approach to Deep Learning-Based Artificial Stereo Extension, attempts to use machine learning to turn mono audio into stereo audio.</p>
+<p>It motivates that: “It is well known that stereophonic sound provides a more pleasant and natural experience than monaural (monophonic) sound on account of the presence of spatial information containing both ambience and/or the distinguished relative positions of objects and events”.</p>
+<p>The idea behind using stereo data for birdsong classification is that this extra presence of spatial information, the information about relative positions of objects and events, would help.</p>
+</section>
+<section id="stereo-data-availability" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="stereo-data-availability"><span class="header-section-number">6.2</span> Stereo Data Availability</h2>
+<p>BirdCLEF 2022, and other datasets, use data from xenocanto, so it is worth looking through it. Ideally, there would be a search tag to find stereo data.</p>
+<p>On xenocanto records, under Technical details, it states various details. Here is an example from https://xeno-canto.org/757580. ## Xenocanto Technical Details - File type mp3 - Length 24.7 (s) - Sampling rate 44100 (Hz) - Bitrate of mp3 258189 (bps) - Channels 2 (stereo) - Device not specified - Microphone not specified - Automatic recording yes</p>
+<p>It does tell us the number of channels and so whether it is stereo or mono. This example is missing the device and microphone, but I found another with a iphone using a Echo Meter Touch 2 Pro. There are also useful properties on xeno-canto like the recording quality and environment, as well as the type of bird sound. Whether it is a flight call or dawn song etc.</p>
+<p>Xeno-canto doesn’t just have individual bird recordings, but also soundscapes that I suspect will be mostly unlabeled.</p>
+<p>But how about searching for stereo data in bulk?</p>
+<p>https://xeno-canto.org/help/search states how to do an advanced search. Entries are tagged, and you search through tags with tag:searchterm. Available tags include the country, the geographic coordinates, whether there are other species in the background, the recording quality. A limitation is that I cannot see how to search for specifically mono or stereo data. There is a tag for the device, the microphone, and the sampling rate, but not the number of channels. I can instead search using the remarks tag (the comments from the uploader) and the mic tag for stereo microphones.</p>
+<p>Looking at the API at https://xeno-canto.org/explore/api, it has dvc: recording device used, mic: microphone used, smp: sample rate, but not explicitly the number of channels. Perhaps if I contact xeno-canto they will know of a way to look for just stereo data.</p>
+<p>Another website Robert linked to me, freesound.org, explicitly has a stereo tag! https://freesound.org/browse/tags/stereo/. However, it only has 5093 recordings, and if I add ‘bird’ as a tag, only 241. There might however be other datasets for stereo data.</p>
+<p>Since there are ways to record stereo data, I will assume the type of microphone used really matters to process delicate information like the relative positions of objects and events. This means that data might be very limited in supply. Either I can train a model on just general stereo audio and fine tune to see if it works for a specific microphone, or train on mono audio and fine tune, or train on some combination and fine tune.</p>
+</section>
+<section id="papers" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="papers"><span class="header-section-number">6.3</span> Papers</h2>
+<p>The first paper in this section was about turning mono data into stereo data. There is also another paper at https://www.researchgate.net/publication/352807819_Identification_of_Fake_Stereo_Audio_Using_SVM_and_CNN, which tries to identify stereo audio data created from mono audio data. In theory you could use the two to improve a model’s ability to generate stereo data from mono data.</p>
+<p>Classification of Bird Species using Audio processing and Deep Neural Network, at https://ieeexplore.ieee.org/abstract/document/9917735:</p>
+<p>It discusses audio feature extractors like the spectrogram and Inverse Short Time Fourier Transform, as well as different ML approaches as related work.</p>
+<p>They (frustratingly) don’t state their dataset’s name, only that it’s on Kaggle and that it’s 23.5gb. I searched through Kaggle and couldn’t easily find it based on that.</p>
+<p>Regardless, in their dataset, 11472 audio files were mono, and 9903 stereo. Not a big difference. THere might be enough stereo data available, but not enough from a specific microphone if that is what is needed.</p>
+<p>BirdCLEF 2022’s dataset doesn’t even include whether the files are stereo or mono in its metadata.csv file.</p>
+</section>
+<section id="conclusion" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">6.4</span> Conclusion</h2>
+<p>Using stereo data might a good approach to the cocktail problem, but I’m unsure whether it would be novel because stereo data has been available for some time. Looking online for “Stereo vs Mono data for audio classification” is surprisingly dry for papers on Google and Google Scholar?</p>
+<p>Because of its delicacy, stereo data might need to be collected from a specific microphone setup to extract it’s delicate information. Xeno-canto doesn’t seem to provide an easy way to search for stereo data, but does allow microphone searches. There is a concern that limiting this project to a specific stereo microphone will limit it’s usefulness for others.</p>
+</section>
+<section id="biosciences-recordings" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="biosciences-recordings"><span class="header-section-number">6.5</span> Biosciences recordings</h2>
+<p>From the biology team, I have received some data of audio recordings.</p>
+<p>The data in total 3.54 gb in size. There are 8 files, all .wav. Each file is 16000hz with two channels (stereo). <br> I used audacity to have a look at some of the files.</p>
+<p>The recordings are from UK woodlands and from a couple of scrub (the wildlife habitat) sites. They are examples of the kind of typical data the biology team has collected. They’ve collected this data for 3-4 years daily during Jan-Jun for about 3-4 years from about 20 different locations.</p>
+<p>What stands out from this dataset to me is the amount of time it has been collected over. If there was a good model to classify birds, it would be really interesting to see how the number of birds changes over the years in these varied locations. This could yield insights into changes in biodiversity due to climate change for example. An alternative project direction would be rather than trying to solve the cocktail problem, to understand and use someone else’s solution to do analysis on it’s results over time.</p>
+<p>The audio files are not labeled. However I recall the biology team had a PhD student who handlabeled some data for them. This would be useful to look at, however due to how much time and effort it takes to handlabel soundscapes, there is most likely not enough data to train a model from scratch on.</p>
+<p>Steve commented on the dataset: <br> “Attached are a selection of woodland audio files to have an initial play with, all from 2017, one from each site in mid-May. They are 2hrs 15mins long and start approx. 45mins before sunrise. So, the first 30 mins is often quiet, and things get gradually noisier and more complex thereafter. We have these data for 3-4 years, daily from about Jan-Jun for about 20 sites. Sites here include Abernethy Forest RSPB , Durham Uni Woodland, Minsmere RSPB, The Lodge RSPB, RSPB Wood of Cree, RSPB Ynis Hir, all from around mid-May. Also included, for slight contrast are a couple of scrub habitat sites (Green Farm nr Durham, Pinnock Hill near Durham)”</p>
+</section>
 </section>
 <section id="unknown-yet-approaches" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Unknown yet Approaches</h1>
@@ -305,20 +354,28 @@ ul.task-list li input[type="checkbox"] {
 <p>I should reading reference [12] of the paper to get a better idea of the soundscape availability problem.</p>
 <p>Searching for ‘diffusion’ within the paper yields no results, implying further that indeed using diffusion to generate soundscapes is a novel approach.</p>
 </section>
-<section id="updated-and-fixed-blog" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="updated-and-fixed-blog"><span class="header-section-number">8.2</span> Updated and Fixed blog</h2>
+<section id="finished-fast.ai-lesson-10" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="finished-fast.ai-lesson-10"><span class="header-section-number">8.2</span> Finished fast.ai lesson 10</h2>
+<p>This lesson was really useful in consolidating understanding about how stable diffusion works. It also starts the hard but rewarding journey of programming entire Python modules/frameworks from scratch, a skill likely vital further on in this project. The fast ai lessons for this advanced course are very demanding. They include a 2-2.30 hour lecture and plenty of homework, with the course creator Jeremy stating that he expects each lesson to take around 10 hours.</p>
+<p>My blog for this lesson can be found at https://exiomius.quarto.pub/blog/posts/2022-09-27-Lesson10Blog.md.html.</p>
+</section>
+<section id="updated-and-fixed-blog" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="updated-and-fixed-blog"><span class="header-section-number">8.3</span> Updated and Fixed blog</h2>
 <p>I was having trouble with my old fastpages based blog not displaying posts with maths and images correctly. To remedy this, I created a blog using Quarto instead. This post is on the new blog, and I transferred all the old posts here too.</p>
 </section>
-<section id="investigated-durham-computation-lending" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="investigated-durham-computation-lending"><span class="header-section-number">8.3</span> Investigated Durham Computation Lending</h2>
+<section id="investigated-durham-uni-supercomputers" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="investigated-durham-uni-supercomputers"><span class="header-section-number">8.4</span> Investigated Durham Uni Supercomputers</h2>
+<p>The computer science department has a list of machines at https://www.durham.ac.uk/departments/academic/computer-science/about-us/facilities/. I met a student who used one for some machine learning research. As I’m a student at both the physics and computer science department, I could possibly use the physics department’s supercomputers too, if they are suited towards ML.</p>
+<p>For my purposes, Bede is GPU based and the description states it is ideally suited towards ML. Bede is shared between multiple universities. At Durham, the main contact Dmitry Nikolaenko at durham-bede-support@n8cir.org.uk.</p>
+<p>Learning how to use Bede, as its Linux based, and how/where to store the training data etc is going to be a task within itself.</p>
 </section>
-<section id="found-yet-more-datasets" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="found-yet-more-datasets"><span class="header-section-number">8.4</span> Found yet more datasets</h2>
+<section id="found-yet-more-datasets" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="found-yet-more-datasets"><span class="header-section-number">8.5</span> Found yet more datasets</h2>
 <p>https://github.com/AgaMiko/bird-recognition-review has useful resources for birdsong classification and yet more datasets.</p>
 <p>This blog post, https://towardsdatascience.com/sound-based-bird-classification-965d0ecacb2b, also contains an approach, but also a nice introduction to the problem.</p>
 </section>
-<section id="found-another-another-thesis" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="found-another-another-thesis"><span class="header-section-number">8.5</span> Found another another thesis</h2>
+<section id="found-another-another-thesis" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="found-another-another-thesis"><span class="header-section-number">8.6</span> Found another another thesis</h2>
 <p>Bird Species Classification And Acoustic Features Selection Based on Distributed Neural Network with Two Stage Windowing of Short-Term Features at https://arxiv.org/ftp/arxiv/papers/2201/2201.00124.pdf by Nahian Ibn Hasan like last week’s thesis, describes another good introduction to the problem and approach.</p>
 
 

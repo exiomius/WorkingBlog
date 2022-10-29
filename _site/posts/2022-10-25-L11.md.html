@@ -142,11 +142,12 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#diffedit-paper" id="toc-diffedit-paper" class="nav-link" data-scroll-target="#diffedit-paper"><span class="toc-section-number">4.1</span>  DiffEdit paper:</a></li>
   </ul></li>
-  <li><a href="#takeaways-from-how-to-read-a-paper" id="toc-takeaways-from-how-to-read-a-paper" class="nav-link" data-scroll-target="#takeaways-from-how-to-read-a-paper"><span class="toc-section-number">5</span>  Takeaways from how to read a paper:</a></li>
+  <li><a href="#takeaways-on-how-to-read-a-ml-paper" id="toc-takeaways-on-how-to-read-a-ml-paper" class="nav-link" data-scroll-target="#takeaways-on-how-to-read-a-ml-paper"><span class="toc-section-number">5</span>  Takeaways on how to read a ML paper:</a></li>
   <li><a href="#notebook-from-foundations-2" id="toc-notebook-from-foundations-2" class="nav-link" data-scroll-target="#notebook-from-foundations-2"><span class="toc-section-number">6</span>  Notebook From Foundations 2</a></li>
   <li><a href="#elementwise-ops" id="toc-elementwise-ops" class="nav-link" data-scroll-target="#elementwise-ops"><span class="toc-section-number">7</span>  Elementwise Ops:</a></li>
   <li><a href="#broadcasting" id="toc-broadcasting" class="nav-link" data-scroll-target="#broadcasting"><span class="toc-section-number">8</span>  Broadcasting</a></li>
-  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links"><span class="toc-section-number">9</span>  Links</a></li>
+  <li><a href="#useful-maths-resources" id="toc-useful-maths-resources" class="nav-link" data-scroll-target="#useful-maths-resources"><span class="toc-section-number">9</span>  Useful maths resources</a></li>
+  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links"><span class="toc-section-number">10</span>  Links</a></li>
   </ul>
 </nav>
     </div>
@@ -169,32 +170,39 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="lecture-notes" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Lecture Notes</h1>
-<p>Changing the prediction equation relying on the guidance parameter to be normalised between 0 and 1 improves the image quality! Sometimes it helps a lot. We can rescale the pred to improve image quality, we can rescale the difference between the vectors too to get a different generated image.</p>
-<p>Another idea: why not lower the guidance_scale value over time? So at the start, to tell the model what image it needs to draw, we have guidance, but afterwards we need less. This helps too!</p>
+<p>The original guidance equation we used was pred = u + g*(t-u)</p>
+<p>We can rescale the difference between t-u, or rescale the pred entirely. The former improves image quality, the latter however generates a different looking image.</p>
+<p>Most importantly, either of these and specifically the latter doesn’t just make images look more detailed, but can fix errors. In our example, a horse had 3 legs instead of 4 before rescaling!</p>
+<p>Another idea: why not lower the guidance_scale value over time? <br> We have high guidance at the start, to tell the model what image it needs to draw. Once it has ‘locked on’ to a result, we can have less guidance. This approach also can help!</p>
+<p>These sorts of changes you could figure out yourself, but often others already have, and it can be hard sometimes to tell that.</p>
 <section id="diffedit-paper" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="diffedit-paper"><span class="header-section-number">4.1</span> DiffEdit paper:</h2>
-<p>arxiv is a preprint paper, so it contains papers before they gave been prereviewed. Regardless they are useful because you can test the concepts and code yourself, and on forums people discuss it. Waiting until peer review takes too long.</p>
-<p>Zotero is free software. You can download papers to Zotero. We can open the paper in Zotero. It’s better because we can annotate, tag them, edit them, sort them etc.</p>
-<p>Reading papers is hard. The goal isn’t to understand the entire paper, just the basic ideas so that we can look at the code to see how it matches, and so how we can write our own code to understand it.</p>
-<p>Start with the abstract. It uses text-condition diffusion, so what we’ve being doing. Semantic image editing is image generation where the generated image is as similar as possible to a given input image.</p>
+<p>Arxiv is a preprint paper. It contains papers before they gave been peer reviewed. Regardless, they are useful because you can test the concepts and code yourself and look on discussions online to see if the paper is good. Waiting until peer review takes too long in such a fast moving field.</p>
+<p>Jeremy recommends Zotero as free software to store, sort, and annotate papers.</p>
+<p>Reading papers is hard. The goal isn’t to understand the entire paper at first. Focus on the basic ideas so that we can look at the code and diagrams to see how it works and then we can work backwards. Writing your own implementation of a paper is the best way to understand it.</p>
+<p>Start by reading the abstract.</p>
+<p>It uses text-condition diffusion, so what we’ve being doing.</p>
+<p>Semantic image editing is image generation where the generated image is as similar as possible to a given input image.</p>
+<p>I didn’t know this, but abstracts can contain diagrams, this one is really useful!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-25-L11.md_files/figure-html/image.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
-<p>Currently techniques required you to draw a mask (the part around the thing to change). This paper generates the mask for you!</p>
-<p>Papers are full of citations. Don’t read all of them, every paper will have more citations to read.</p>
-<p>If we want to turn a dog into a cat, we want to keep the pose and positioning. Older papers used a mask to delete the area and regenerate, but this paper attempts to keep pose and positioning.</p>
-<p>Read references, examples, abstract. Often skip straight to experiments. Do this so you can see the aim of the paper. You need to know the aim to understand the paper.</p>
-<p>The related work section is important to study if you want to do a deep dive. There’s a lot of repetition in the paper on the papers cited and that’s fine to skip. The end part of related work is normally most interesting. If you wanted to do the best possible to get the best ideas, spending ages on related work is important.</p>
-<p>The background section. This section is often the scariest. It’s the maths behind how the model works. Noone in the world looks at the background and gets it. First youd need to know DDPM, and spend ages reading it. After that, then it makes sense. The background is meant to be a reminder of something you already know, not a place to learn it from scratch. Every diffusion paper has these equations, and lesson 9B covers them properly. The background is often read last and to look cool for reviewers. The main goal of reading it is to know the symbol’s definitions so that you can understand them later.</p>
-<p>How to read this? Jeremy first recommends to learn the greek alphabet.</p>
-<p><span class="math inline">\(\epsilon\)</span></p>
-<p>L is for the loss function. How to understand what some symbols mean? We can use a program called mathpix. You select anything in your screen, and it turns it into latex! But mathpix is very expensive, but pix2tex is free!</p>
-<p>This is good because latex is written as searchable text, put it into google. We can also download the other formats of our paper. We can download source to download the original latex document and look at that too.</p>
-<p>And Detexify lets you draw a symbol to tell you what it is in latex.</p>
-<p>The L2 norm gives the subscript 2. We have a subscript 2 for L2 norm, and a top 2 for squared. The entire thing in the modulus just turns into Sigma(x^2)!</p>
+<p>Currently techniques require you to draw a mask around the subject you want to change in the input image. This paper has an apporach to generate the mask for you!</p>
+<p>Papers are full of citations. Don’t read all of them, it’s impossible because every paper will have even more citations to read, and you’ll end up spending too much time on it. Focus on only the very important/relevant papers.</p>
+<p>If we want to turn a dog into a cat, we want to keep the dog’s pose. Older papers used a mask to delete the area and regenerate, but that can’t keep the pose. This paper’s method attempts to keep the pose!</p>
+<p>In a paper, the first thing we need to understand is the aim of the paper. This context makes everything else make much more sense. To do this, we start with the abstract, then look at the references, experiments and examples. Often we skip a lot of sections and text.</p>
+<p>The related work section is important to study if you want to do a deep dive. There’s a lot of repetition in the paper of the papers cited and that’s fine to skip. The last lines of related work are normally the most interesting. If you wanted to do the best possible to get the best ideas, spending ages on related work is important.</p>
+<p>The background section. This section is often the scariest. It’s the maths behind how the model works. No one in the world looks at the background and gets it immediately.</p>
+<p>In this case, first you need to really know DDPM well. This could take a very long time of reading previous papers, testing it yourself, and talking to others. After that, then it makes sense quickly. The background is meant to be a reminder of something you already know, not a place to learn it from scratch.</p>
+<p>Every diffusion paper has these equations, and lesson 9B covers them properly. The background is often to look cool for reviewers. The main goal of reading it is to know the symbol’s definitions so that you can understand them later on in the paper.</p>
+<p>How should you approach reading the background section?</p>
+<p>First learn the greek alphabet properly. We can use a program to take images of maths and tell us their LaTex representation. This allows us to google the terms. Instead, we can just download the paper in LaTex format.</p>
+<p>The fancy L is just the loss function.</p>
+<p>After some googling we find that: <br> The L2 norm has the subscript 2. L2 norm is just denoted with a subscript 2, and a top 2 for squared.</p>
+<p>This means that the entire thing in the modulus is just Sigma(x^2)!</p>
 <p>Trying to find what E is!</p>
 <p>Looking at the latex paper file:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -203,49 +211,78 @@ ul.task-list li input[type="checkbox"] {
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
-<p>mathbb{E} we can google! It’s the expected value operator. Expected value is a weighted average. It’s Sum (prob*value) to give the average result.</p>
+<p>It’s mathbb{E}, now let’s google it! <br></p>
+<p>It’s the expected value operator. Expected value is a weighted average. It’s Sum <span class="math inline">\((probability*value)\)</span> and gives the average result.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-25-L11.md_files/figure-html/image.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
-<p>epislon is distributed normally with I, the identity (look lesson 9b), but episilon 0 is a noise estimator.</p>
-<p>Looking at the equation: We have the noise, the prediction of it. Subtact them, square it, and find the expected value. This is all just the mean squared error. The loss function is just the mean squared error…</p>
-<p>We reduce the value of each pixel and add noise to each pixel. And this goes so on.</p>
-<p>Once you understand what you’re looking for, the equations make sense. Remember this is a background section. It tells us what is already there and what they changed.</p>
-<p>What we’d find is that none of the further background matters. There’s only a subsection of the background we need to understand for our purposes. You don’t need to read the whole thing.</p>
-<p><img src="2022-10-25-L11.md_files/figure-html/image.png" class="img-fluid" alt="image.png"> means nothing (unconditional, no prompt, ““)</p>
-<p>The diagram explaning it is often the best part of the paper.</p>
-<p>Step 1: We make a mask based on the difference between the denoising of the original prompt (zebra) and the denoising on a new prompt (horse). Step 2: Take the Horse, add noise to it. Step 3: During inference, while we turn the noised horse, we make the background stay the same.</p>
-<p>Theoretical analysis part Jeremy skips. People add this to get past review. This is proving why this method is better than others.</p>
-<p>Experimentation setup shows us what datasets they used and so on. They use metrics like CSFID and FID. We don’t usually care either. They do because they want to publish papers and good metrics prove themselves.</p>
-<p>But here we find some examples. Very cool to see and also lets you understand how good and bad the technique is in certain areas.</p>
-<p>Limitation we realised: If you cant come up with a mask to change your image, it won’t work. A bowl of fruits to a bowl of fruits purple tinged photo. We can’t do this because it requires changing the entire image, but our masks only cover the core subject.</p>
-<p>Conclusion almost never adds anything ontop of what we’ve already read.</p>
-<p>Often however, the ammendixes are itneresting for more examples. Often some of the most interesting examples are there.</p>
-<p>It’s important to remember, this wasn’t a carefully chosen paper, it was just the most interesting paper this week. This is how reading papers is like. The big stretch/homework is to try and implement some of this paper. To do it, lesson 9 contains what you need.</p>
-<p>To find good papers, follow akaliz on twitter. pretty much everybody does this.</p>
+<p>Epsilon is the noise. It is distributed normally with a mean of 0 and variance of I. <br> I is the identity matrix, covered more in lesson 9b.</p>
+<p>Epsilon subscript 0 is a estimate for the noise.</p>
+<p>Looking at the loss equation:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-25-L11.md_files/figure-html/image-2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Loss.png</figcaption><p></p>
+</figure>
+</div>
+<p>We have an expression for the noise, Epsilon, and for a prediction of it, Epsilon_0. We subtract them from eachother, square it, and find the expected value.</p>
+<p>Does it look familiar to something we know?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-25-L11.md_files/figure-html/image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">From https://vedexcel.com/how-to-calculate-mean-squared-error-mse-in-python/.png</figcaption><p></p>
+</figure>
+</div>
+<p>The loss function is just MSE but with some tweaks! There’s no 1/n and there’s L2 normalisation.</p>
+<p>The point is, this scary looking loss equation boils down to something we’re already well familiar with!</p>
+<p>Once you understand that we’re working with a concept we already know, the equations make sense. Remember that this is a background section. It tells us about prior concepts and how they changed them.</p>
+<p>In practice, often none of the further background matters. There’s only a subsection of the background we need to understand for our purposes. You don’t need to read the whole thing.</p>
+<p>The diagram in the paper is often the best part in understanding it.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-25-L11.md_files/figure-html/image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>The strange O means nothing: unconditional diffusion. In my terms, with a prompt of ““.</p>
+<p>Step 1: We make a mask based on the differences between the denoising of the original prompt (zebra) and the denoising on a new prompt (horse). Step 2: Take the Horse, add noise to it. Step 3: During inference, while we turn the noised horse, we make the background stay the same.</p>
+<p>Jeremy skips the Theoretical analysis. It’s needed to get past peer review. It proves more concretely why this method is better than others. This is needed from a science pov, but as appliers we can clearly see it works well and test it ourselves so we don’t need to throughly know the proof.</p>
+<p>The Experimentation setup shows us what datasets they used and so on. They use metrics like CSFID and FID. We don’t usually care for out interests either. This is needed because good metrics are proof to explain why the method is better for reviews.</p>
+<p>But here we find some examples. It’s very cool to see, and also lets you understand how good and bad the technique is in certain areas.</p>
+<p>Looking at these examples, we thought of a realisation: <br> The generated masks cover the core subject in the image, but what if we wanted to change both the core subject and the rest of the image? It can’t have its single mask cover both properly to change both. For example, changing a bowl of apples to a bowl of oranges in a purple tinged photo.</p>
+<p>The conclusion section almost never adds anything on top of what we’ve already read.</p>
+<p>However, the appendices afterwards are useful for more examples. Often some of the most interesting examples are there.</p>
+<p>It’s important to remember that this wasn’t a carefully chosen paper. It was just the most interesting paper this week. This walkthrough was the typical paper reading experience.</p>
+<p>Challenging homework given is to try and implement some of this paper. To do it, lesson 9 contains what you need.</p>
 </section>
 </section>
-<section id="takeaways-from-how-to-read-a-paper" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Takeaways from how to read a paper:</h1>
+<section id="takeaways-on-how-to-read-a-ml-paper" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Takeaways on how to read a ML paper:</h1>
+<ul>
+<li>We often read papers from Arxiv that are not peer reviewed yet because the field moves too quickly for that and because we can test it ourselves and see discussions online.</li>
+<li>The first thing to understand is the aim of the paper. This makes everything else make more sense in context.</li>
+<li>To do so, don’t get bogged down in details straight away. Focus on the basic ideas so that we can look at the code and examples to understand how it works.</li>
+<li>Writing your own implementation of a paper is the best way to understand it.</li>
+<li>Papers are full of citations but you can’t read all of them because there is too many and they will have their own citations. Focus only on very relevant citations.</li>
+<li>Start by reading the abstract. Focus on the references, experiments and examples. Skip a lot of text.</li>
+<li>The related work section is important if you want to do a deep dive. This is needed if you want to get the best possible ideas. Regardless, the last lines of the section are often the most interesting.</li>
+<li>The background section is often the scariest. It’s the maths behind the paper. It takes time to understand and that’s okay. It’s meant to be a reminder of something you already know, not an introduction.</li>
+<li>The main goal of reading the background section should be to understand the symbol definitions used in the paper for later reading.</li>
+<li>In practice, after you understand the main concepts and symbol definitions, reading the background further isn’t useful.</li>
+<li>The diagram is often the best part of the paper to understand it.</li>
+<li>Skip the theoretical analysis at first. It’s a proof of why the paper’s approach is better than others. Similarly, the experimentation setup uses metrics to do so too.</li>
+<li>However, the experimentation setup can have some useful examples to understand the technique.</li>
+<li>The conclusion normally never adds anything on top of what we’ve already read.</li>
+<li>The appendices often contain really interesting examples so check them out!</li>
+</ul>
+<p>In conclusion, first try and understand the goal and basic ideas of the paper, then use the diagrams and examples to understand further. Read different sections depending on your interests, so skip parts of sections and/or full sections if needed.</p>
 </section>
 <section id="notebook-from-foundations-2" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Notebook From Foundations 2</h1>
 <p>Now we need to do matrix multiplication because we have tensors ready. Matrix multiplication is row by column. We do it for every element pair row column and that gives us one value. We do this for the entire matrix.</p>
-<p>We do a minibatch: 5 images multiplied by the weights matrix.</p>
-<p>We want to get the dimensions from the minibatch image store m1 and the weights.</p>
-<p>Our resultant tensor is 5x10. This is from 5x784 by 784x10, the outer numbers.</p>
-<p>We have a loop in a loop in a loop. This works, but is very very slow.</p>
-<p>We change the print options to make it easier to read. Put this at the top of your notebooks, with numpy too.</p>
-<p>One all the different cells work properly, select them all, copy and paste them, merge them, and turn them into a function. Still keep the old cells though, makes learning/testing easier.</p>
-<p>This took half a second, very very long.</p>
-<p>Numba takes Python, and turns it into machine code. It’s very easy to use! Write at-njit at the start of a function. Numba only works with numpy, so we use arrays instead of tensors.</p>
-<p>Try a dot product, it taks 1/5th of a sec, because it has to compile and run. The second time, it only takes 21 microsecs, because it just has to call, not compile. With numba, we get python to run at c speed!</p>
-<p>We now can replace one of our loops in our loop loop loop function with a dot product compiled c call.</p>
-<p>test_close checks if two things give similar results. two functions.</p>
-<p>now we try matmul again, and it’s about 2000 times faster just by changing one loop with numba!</p>
 </section>
 <section id="elementwise-ops" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Elementwise Ops:</h1>
@@ -260,11 +297,46 @@ ul.task-list li input[type="checkbox"] {
 <section id="broadcasting" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> Broadcasting</h1>
 <p>For arrays with different shapes. We can do any operation with a scalar to do it elementwise.</p>
+<p>Broadcast vectors across matrices, with different ranks and all sorts.</p>
+<p>We can add a row vector to a matrix. This does row wise element wise operations! Broadcasting happens because of the function expand.as t = c.expand_as(m), copies c and extends it over to m’s shape. t doesn’t make a new matrix to store as this. It does a trick! it stores rows as a stride of 0. this means everytime it goes to its next row, it doesn’t move one row (stride 1) or skip a row (stride 2), but doesn’t move at all!</p>
+<p>expand_as is very important for linear algebra. these Numpy rules are the same in Jax, tensorflow, pytorch so learn them!</p>
+<p>Methods to convert a 1D vector to a 2D matrix:</p>
+<p>c.unsqueeze(0) adds a columns? with 0s. c[none,:] indexes into c and adds a dimension for the first coumn, like m[2,:], is every column, row 2.</p>
+<p>They insert a unit axis.</p>
+<p>To add columns: unsqueeze 1 unzeeses the first dimesion instead of the 0th, so we have 3 rows and 1 column instead of just 3 rows.</p>
+<p>m + c[:,none] does the expand_as for you. this adds the vector to each column instead of each row which just plain m+c does</p>
+<p>m +c[none,:] then does the same as plain m+c?</p>
+<p>rules:</p>
+<p>c[None,:] is 1,3 and c[:,none] is 3,1 We multiply them, what does it do? It does expand_as to the first 1,3 column vector to work against each of the rows. it does it to the 3,1 row vector to work against the columns. This does an outer product * for us easy.</p>
+<p>We can use an ‘outer boolean’ too!</p>
+<p>First numpy compares the shapes element wise. If they are compatable, so if the outer shape numbers are the same. If not, then it broadcasts dimensions to make them compatable. I think the easiest way to image this is that, if you can a column vector and a row vector with 3 elements, it simply duplicates the column vector twrice to get a 3x3 and the row vector twrice to get it 3x3, then does the multp</p>
+<p>scalar example. 256x256x3 colour image. we want to normalise it. multiple the image by a 1d array of 3 (a scalar). It goes right to left</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-25-L11.md_files/figure-html/image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>and sees there are missing values, so just replaces them with 1. this just multiplies the channels (3) by 3 to get 9.</p>
+<p>??? Grab a scalar, we have an image rolled out. it has a [784] shape, so 784 values of intergers. add a unit axis to it to get [784,1] shape Now we use expand it as m2 to make it the same size. m2 are our weights vector, 10 elements now we can multiply to make it 784x10. This multplication has multiplied the 10 weights by each digit??? ???</p>
+<p>for matmul, we can multiply by b using broadcasting instead. the previous cell does the same thing as the new line #broadcast ver</p>
+<p>matmul is faster now!</p>
+<p>Now matmul is so fast, we dont need to use a minibatch of 5 images. Just do the whole dataset. it works so quickly!</p>
+<p>Broadcasting is very very useful. The number 1 most critical foundation! Comes up in deep learning all the time! Learn it properly!</p>
 </section>
-<section id="links" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Links</h1>
+<section id="useful-maths-resources" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Useful maths resources</h1>
 <ul>
-<li>As I am doing this lesson as it is released privately live, I cannot share links to the resources.</li>
+<li>Maths cheat sheet https://ourway.keybase.pub/mathematics_cheat_sheet.pdf and wikipedia https://en.wikipedia.org/wiki/Glossary_of_mathematical_symbols#Other_brackets page for maths notation.</li>
+<li>pix2tex to convert images of equations to latex https://github.com/lukas-blecher/LaTeX-OCR.</li>
+<li>Anki deck for Greek letters that are used in science and maths https://ankiweb.net/shared/info/2118139507.</li>
+<li>Detexify web page to draw symbols to see their latex. https://detexify.kirelabs.org/classify.html.</li>
+</ul>
+</section>
+<section id="links" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Links</h1>
+<ul>
+<li>As I am doing this course as it is released privately live, I cannot share links to the lesson.</li>
 </ul>
 
 

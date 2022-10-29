@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Adnan Jinnah">
+<meta name="dcterms.date" content="2022-11-01">
+
+<title>RvCode - Masters Project 1/11/2022</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">RvCode</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/exiomius/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Masters Project 1/11/2022</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Masters</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Adnan Jinnah </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 1, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro"><span class="toc-section-number">1</span>  Intro</a></li>
+  <li><a href="#meeting" id="toc-meeting" class="nav-link" data-scroll-target="#meeting"><span class="toc-section-number">2</span>  Meeting</a>
+  <ul class="collapse">
+  <li><a href="#during-the-meeting-we-discussed" id="toc-during-the-meeting-we-discussed" class="nav-link" data-scroll-target="#during-the-meeting-we-discussed"><span class="toc-section-number">2.1</span>  During the meeting we discussed:</a></li>
+  </ul></li>
+  <li><a href="#week-roundup" id="toc-week-roundup" class="nav-link" data-scroll-target="#week-roundup"><span class="toc-section-number">3</span>  Week Roundup</a></li>
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link" data-scroll-target="#project-overview"><span class="toc-section-number">4</span>  Project Overview</a>
+  <ul class="collapse">
+  <li><a href="#that-leaves-four-possible-combinations" id="toc-that-leaves-four-possible-combinations" class="nav-link" data-scroll-target="#that-leaves-four-possible-combinations"><span class="toc-section-number">4.1</span>  That leaves four possible combinations:</a></li>
+  </ul></li>
+  <li><a href="#different-methods-of-finetuning-pretrained-models" id="toc-different-methods-of-finetuning-pretrained-models" class="nav-link" data-scroll-target="#different-methods-of-finetuning-pretrained-models"><span class="toc-section-number">5</span>  Different methods of finetuning pretrained models</a>
+  <ul class="collapse">
+  <li><a href="#finetuning" id="toc-finetuning" class="nav-link" data-scroll-target="#finetuning"><span class="toc-section-number">5.1</span>  Finetuning</a></li>
+  <li><a href="#textual-inversion" id="toc-textual-inversion" class="nav-link" data-scroll-target="#textual-inversion"><span class="toc-section-number">5.2</span>  Textual inversion</a></li>
+  <li><a href="#dreambooth" id="toc-dreambooth" class="nav-link" data-scroll-target="#dreambooth"><span class="toc-section-number">5.3</span>  Dreambooth</a></li>
+  <li><a href="#aesthetic-gradients" id="toc-aesthetic-gradients" class="nav-link" data-scroll-target="#aesthetic-gradients"><span class="toc-section-number">5.4</span>  Aesthetic Gradients</a>
+  <ul class="collapse">
+  <li><a href="#ag-example" id="toc-ag-example" class="nav-link" data-scroll-target="#ag-example"><span class="toc-section-number">5.4.1</span>  AG Example</a></li>
+  <li><a href="#ag-discussion" id="toc-ag-discussion" class="nav-link" data-scroll-target="#ag-discussion"><span class="toc-section-number">5.4.2</span>  AG Discussion</a></li>
+  </ul></li>
+  <li><a href="#limitations-of-finetuning" id="toc-limitations-of-finetuning" class="nav-link" data-scroll-target="#limitations-of-finetuning"><span class="toc-section-number">5.5</span>  Limitations of finetuning</a>
+  <ul class="collapse">
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations"><span class="toc-section-number">5.5.1</span>  Limitations:</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#which-finetuning-method-to-use" id="toc-which-finetuning-method-to-use" class="nav-link" data-scroll-target="#which-finetuning-method-to-use"><span class="toc-section-number">6</span>  Which finetuning method to use?</a></li>
+  <li><a href="#deployment-options" id="toc-deployment-options" class="nav-link" data-scroll-target="#deployment-options"><span class="toc-section-number">7</span>  Deployment Options</a>
+  <ul class="collapse">
+  <li><a href="#paperspace" id="toc-paperspace" class="nav-link" data-scroll-target="#paperspace"><span class="toc-section-number">7.1</span>  Paperspace</a>
+  <ul class="collapse">
+  <li><a href="#paperspace-conclusion" id="toc-paperspace-conclusion" class="nav-link" data-scroll-target="#paperspace-conclusion"><span class="toc-section-number">7.1.1</span>  Paperspace conclusion</a></li>
+  </ul></li>
+  <li><a href="#locally" id="toc-locally" class="nav-link" data-scroll-target="#locally"><span class="toc-section-number">7.2</span>  Locally</a></li>
+  <li><a href="#deployment-conclusion" id="toc-deployment-conclusion" class="nav-link" data-scroll-target="#deployment-conclusion"><span class="toc-section-number">7.3</span>  Deployment Conclusion</a></li>
+  </ul></li>
+  <li><a href="#esrgan-upscaling-models" id="toc-esrgan-upscaling-models" class="nav-link" data-scroll-target="#esrgan-upscaling-models"><span class="toc-section-number">8</span>  ESRGAN (Upscaling) Models</a></li>
+  <li><a href="#another-idea-to-do-soundscape-spectrogram-creation" id="toc-another-idea-to-do-soundscape-spectrogram-creation" class="nav-link" data-scroll-target="#another-idea-to-do-soundscape-spectrogram-creation"><span class="toc-section-number">9</span>  Another idea to do soundscape spectrogram creation</a></li>
+  <li><a href="#reference-papers-from-robert" id="toc-reference-papers-from-robert" class="nav-link" data-scroll-target="#reference-papers-from-robert"><span class="toc-section-number">10</span>  Reference Papers from Robert</a>
+  <ul class="collapse">
+  <li><a href="#soundscape_ir-module" id="toc-soundscape_ir-module" class="nav-link" data-scroll-target="#soundscape_ir-module"><span class="toc-section-number">10.1</span>  soundscape_IR Module</a></li>
+  <li><a href="#computational-bioacoustics-with-deep-learning-a-review-and-roadmap" id="toc-computational-bioacoustics-with-deep-learning-a-review-and-roadmap" class="nav-link" data-scroll-target="#computational-bioacoustics-with-deep-learning-a-review-and-roadmap"><span class="toc-section-number">10.2</span>  Computational bioacoustics with deep learning: a review and roadmap</a></li>
+  <li><a href="#typical-approach" id="toc-typical-approach" class="nav-link" data-scroll-target="#typical-approach"><span class="toc-section-number">10.3</span>  Typical Approach:</a></li>
+  <li><a href="#dataset-synthesissimulation-sim2real" id="toc-dataset-synthesissimulation-sim2real" class="nav-link" data-scroll-target="#dataset-synthesissimulation-sim2real"><span class="toc-section-number">10.4</span>  Dataset synthesis/simulation (sim2real)</a></li>
+  <li><a href="#conclusion-for-now" id="toc-conclusion-for-now" class="nav-link" data-scroll-target="#conclusion-for-now"><span class="toc-section-number">10.5</span>  Conclusion (for now)</a></li>
+  <li><a href="#papers-to-motivate-bioacoustic-classification" id="toc-papers-to-motivate-bioacoustic-classification" class="nav-link" data-scroll-target="#papers-to-motivate-bioacoustic-classification"><span class="toc-section-number">10.6</span>  Papers to motivate bioacoustic classification:</a></li>
+  </ul></li>
+  <li><a href="#work-done" id="toc-work-done" class="nav-link" data-scroll-target="#work-done"><span class="toc-section-number">11</span>  Work Done:</a></li>
+  <li><a href="#to-do" id="toc-to-do" class="nav-link" data-scroll-target="#to-do"><span class="toc-section-number">12</span>  To do</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="intro" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Intro</h1>
+<p>The sixth post from a series of posts about my Masters project with the Physics Department at Durham University.</p>
+</section>
+<section id="meeting" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Meeting</h1>
+<section id="during-the-meeting-we-discussed" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="during-the-meeting-we-discussed"><span class="header-section-number">2.1</span> During the meeting we discussed:</h2>
+</section>
+</section>
+<section id="week-roundup" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Week Roundup</h1>
+<p>This week I evaluated how to do my stable diffusion spectrogram generation approach, including the different subtasks and finetuning. I investigated three different fine-tuning techniques: Textual inversion, Dreambooth, and Aesthetic Gradients. Including (briefly) how they work and their limitations. I then tried to deploy/implement them using an online service (Paperspace) and my own machine. Lastly, I looked over some papers kindly sent from Robert, the highlight being “Computational bioacoustics with deep learning: a review and roadmap”, a literature review covering the state of the field of my interests: using computational methods in bioacoustics.</p>
+</section>
+<section id="project-overview" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Project Overview</h1>
+<p>The final aim is to use stable diffusion to generate labeled spectrograms of soundscapes. However, this task is too difficult to approach immediately, so we will start by considering the different stages of the problem.</p>
+<p>First there is a difference in generating spectrograms of birdsong and generating spectrograms of entire soundscapes. The latter is a much harder task. I am unsure whether the model training process for both problems is the same, but regardless, trying to solve the former task first makes sense in order to see whether it can be done reliably enough to move onto the latter. If I can’t reliably generate spectrograms of individual birds singing, then there is little chance to reliably generate a spectrogram of an entire soundscape.</p>
+<p>There is also the issue of training data. The full soundscape model must be able to generate environmental sounds too, so should be trained on them. Since I’m going to start with just generating spectrograms of birdsong, this will be ignored for now.</p>
+<p>I can either finetune a ‘regular’ pretrained model, or train one from scratch. By ‘regular’, I mean a model trained to generate images of ‘normal’ things such as people, objects, animals, etc, not of a spectrogram, which is very specific.</p>
+<section id="that-leaves-four-possible-combinations" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="that-leaves-four-possible-combinations"><span class="header-section-number">4.1</span> That leaves four possible combinations:</h2>
+<ol type="1">
+<li>Finetuning a regular pretrained model on only birdsong to generate only birdsong.</li>
+<li>Finetuning a regular pretrained model on birdsong and environmental noise to generate environmentally noisy birdsong.</li>
+<li>Training a model from scratch on only birdsong to generate birdsong.</li>
+<li>Training a model from scratch on birdsong and environmental noise to generate environmentally noisy birdsong.</li>
+</ol>
+<p>The idea of my entire approach is that the second and fourth combinations can be used/adapted to create entire soundscapes.</p>
+<p>As an example, if a prompt was “A American Robin singing in a forest environment” to generate a spectrogram, the model would also be able to generate a soundscape spectrogram from the prompt “A American Robin singing in a loud forest environment followed by a American Goldfinch singing in a quiet forest environment”.</p>
+<p>The first thing I will attempt is the first combination. It is very questionable whether a normal pretrained model can be finetuned to generate spectrograms as spectrograms are radically different to normal images. To do so, we first must consider what method to finetune a pretrained model with.</p>
+</section>
+</section>
+<section id="different-methods-of-finetuning-pretrained-models" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Different methods of finetuning pretrained models</h1>
+<p>There are multiple techniques to finetune a pretrained stable diffusion model. The field is not yet mature enough to objectively define the best one with all the advances and possible permutations of each technique. This is especially correct given that different approaches may be better for different tasks.</p>
+<p>I have used the term ‘finetuning’ loosely to mean adding data of a new subject to a model to allow the model the ability to generate images of said subject. In actuality, fine-tuning refers to a specific technique. However, colloquially people refer to all the different techniques as finetuning. I will do the same, but take care to specify the particular method in question.</p>
+<p>Below are some common techniques for finetuning. In reality, their complexity is a lot higher than is described, but for now we avoid becoming bogged down in the detail.</p>
+<section id="finetuning" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="finetuning"><span class="header-section-number">5.1</span> Finetuning</h2>
+<p>We take a pretrained model, cut off its head (the last node: the output node), and create a new head. We then finetune the whole model with new data: our own images and captions. This makes the new head produce outputs deliberate for our interests.</p>
+</section>
+<section id="textual-inversion" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="textual-inversion"><span class="header-section-number">5.2</span> Textual inversion</h2>
+<p>Textual inversion (TI) is a special type of finetuning. The process is to create a new model embedding for some concept we want in some new data we have. For example, we have watercolour-styled images and we want the model to learn how to generate styled images.</p>
+<p>We start by adding a new token, ‘watercolour’, with a corresponding new embedding to our text model. Then we train the new embedding on our watercolour images. Once the model has been trained, it ‘knows’ what watercolour means. Now we can write prompts with it as we please. For example: “Woman in the style of watercolour”.</p>
+<p>An embedding is a store of relations between images and words in the CLIP subsection of our stable diffusion model. Simply put, it’s how the model stores knowledge to ‘know’ what words are associated to what images. For textual inversion, we create a new embedding and train the model so that it ‘knows’ what watercolour ‘means’.</p>
+<p>A token is easiest understood to be a written word that corresponds to a embedding. In the prompt “Woman in the style of watercolour”, watercolour is a token and we trained a corresponding embedding for it.</p>
+</section>
+<section id="dreambooth" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="dreambooth"><span class="header-section-number">5.3</span> Dreambooth</h2>
+<p>Dreambooth is similar to textual inversion. Instead of making a new token/embedding set, it finds an existing token/embedding set that is barely used, then finetunes it with our new data. This works because some token/embedding sets are rarely used in prompts as an artifact of how they are created.</p>
+</section>
+<section id="aesthetic-gradients" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="aesthetic-gradients"><span class="header-section-number">5.4</span> Aesthetic Gradients</h2>
+<p>Aesthetic Gradients (AG) is different to the previous techniques because it allows you to generate your own style without finetuning or needing large computation. Both textual inversion and Dreambooth are intended to add the ability to generate new objects. In contrast, AG is designed to implement the ability to create new styles, not new objects.</p>
+<section id="ag-example" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="ag-example"><span class="header-section-number">5.4.1</span> AG Example</h3>
+<p>The AG paper at https://arxiv.org/pdf/2209.12330.pdf gives some examples of the difference between original Stable Diffusion (SD) and Stable Diffusion with AG. The examples showcase AG’s ability to generate desired new styles of images.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MP6_files/figure-html/image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Ivan Aivazovsky Imitation</figcaption><p></p>
+</figure>
+</div>
+<p>We want our model to create a painting of a tree that looks like it was drawn by the artist Ivan Aivazovsky.</p>
+<p>The first image is original SD creating an image just with the prompt “A painting of a tree, oil on canvas”. There is no link to Aivazovsky in it.</p>
+<p>The second image is original SD creating an image with the modified prompt “A painting of a tree, oil on canvas, by Ivan Aivazovsky”. We have trained original SD on 5 paintings by Aivazovsky using the SD’s default training mechanisms. Notice how it is only slightly changed.</p>
+<p>The third image is AG implemented to SG. With only 5 paintings it had dramatically changed the style of the image. Notice that the prompt is unchanged from the first image’s: “A painting of a tree, oil on canvas”.</p>
+<p>The paper also shows other examples where instead of 5 paintings (images) of the new style, it uses 100. The trend is still the same: using SD to append the style keyword to the prompt has little effect compared to using AG to imitate a given style.</p>
+</section>
+<section id="ag-discussion" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="ag-discussion"><span class="header-section-number">5.4.2</span> AG Discussion</h3>
+<p>We could use AG to implement a ‘spectrogram’ style to our images. This would simplify prompt creation because we would no longer have to specify the style using a keyword. Furthermore, it appears that AG is better at changing a model to be able to implement dramatic shifts in style, and creating images of spectrograms is indeed a very dramatic shift.</p>
+<p>One prudent concern about AG as a finetuning method is it’s prompt reduction method. In our example, all prompts we enter into our model now will be in the style of Ivan Aivazovsky. This could be an issue because say we want the same model to produce images in the style of another artist. We would have to start over and use a new model to do so. This is unlike the usual stable diffusion modified prompt method in which adding “by Ivan Aivazovsky” to any given prompt modifies the style of the generated image. With this method, we could use the same model to generate images in the style of many artists, not just one.</p>
+<p>Instead of having one spectrogram style for all generated prompts. Perhaps we could make a style for each spectrogram of each species of bird, and each spectrogram of each type of environmental sound. AG might be incompatible for this approach.</p>
+<p>To use AG, a user recently implemented it into his stable diffusion repository at https://github.com/AUTOMATIC1111/stable-diffusion-webui with discussion at https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/2585. This user in particular, AUTOMATIC1111, appears to implement new papers very quickly, so is worth following to see updates in the field. His repository has a plethora of papers and techniques implemented which are worth investigation.</p>
+<p>The AG preprint paper was released 25th September. It is unlikely that mature research to use it to generate spectrograms has been done or even thought about.</p>
+<p>Aesthetic Gradients can also be used not as an alternative but as an addition to Dreambooth or TI. A example is given here https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/3350.</p>
+<p>More information about AG can be found at a blog post https://metaphysic.ai/custom-styles-in-stable-diffusion-without-retraining-or-high-computing-resources/ and at the official author’s Github https://github.com/jmoraes7/stable-diffusion-aesthetic-gradients.</p>
+</section>
+</section>
+<section id="limitations-of-finetuning" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="limitations-of-finetuning"><span class="header-section-number">5.5</span> Limitations of finetuning</h2>
+<p>Naturally, the limitations are dependent on the approach specified. I will however write some general concerns:</p>
+<section id="limitations" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="limitations"><span class="header-section-number">5.5.1</span> Limitations:</h3>
+<ul>
+<li>If a model has only been trained on some type of data there is no guarantee that finetuning it with new data will result in good results.</li>
+<li>Finetuning methods tends to be reliant on the specifics of this new data. For example, to finetune an image of myself it is best to give images of me in different poses and environments. Furthermore, the number of images given matters too.</li>
+<li>Finetuning can be computationally expensive. It requires too much computation for my laptop. To remedy this, I have been using an online GPU service called Paperspace. Regardless it still can takes hours to finetune a model even using a 30Gb GPU.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="which-finetuning-method-to-use" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Which finetuning method to use?</h1>
+<p>When individuals evaluate how good a given finetuning method is, it is usually done in the context of finetuning normal images, not spectrograms. This makes it hard to apply much discussion done online. It is also extremely unlikely research on state-of-the-art finetuning methods specific to generate spectrograms has been carried out.</p>
+<p>It might be more productive to skip focus on finetuning a normal pretrained model and simply focus on training a model from scratch on spectrograms. However, firstly there might end up a need for finetuning knowledge even on a trained-from-scratch model, and secondly, it is too big a oversight in research to simply entirely skip any attempt of finetuning a normal model.</p>
+<p>For my purposes, I think it makes the most sense to test Textual inversion, Dreambooth, and Aesthetic Gradients myself. This will hopefully lead to some intuition or insight onto how finetuning works, particularly for spectrogram images. These TI and Dreambooth are the most wellknown, making them important to test for the readers’ sake. However, AG, because of its focus on creating styles and prompt simplification, as well as probable less computational effort, might be a great fit for spectrogram creation. It is for this reason that I spent this week trying to get it to work.</p>
+</section>
+<section id="deployment-options" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Deployment Options</h1>
+<p>There are there main ways to run computationally heavy models. On your own machine, on an online service such as Google Collab, Kaggle, or Paperspace, or on a (private) computing cluster/supercomputer. Because using a cluster/supercomputer will require specialised knowledge about Linux, as well as a formal request to the university, this week I have opted to investigate the former two.</p>
+<section id="paperspace" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="paperspace"><span class="header-section-number">7.1</span> Paperspace</h2>
+<p>Paperspace is an online service for a programming environment and GPU usage. This costs money depending the service: there are free limited options available, but paid options too. For testing, I paid to use the cheapest GPU available, a 30Gb P4000 for about 0.4$/hr. Thankfully I have some free credit from a fast.ai offer. It is worth noting however that Paperspace advises using a more expensive GPU is more cost effective for larger projects.</p>
+<p>The first thing I tried was AUTOMATIC1111’s popular stable diffusion implementation. Paperspace themselves have a guide to do so at Paperspace have a guide at https://blog.paperspace.com/stable-diffusion-webui-deployment/.</p>
+<p>The guide’s method of deployment is extremely limited. You cannot modify the files or implementation, making it impossible for me to install Aesthetic Gradients. However, it comes with Textual Inversion. It is also unable to use Dreambooth.</p>
+<p>A reminder to myself is when I’m done with my session, to end it by changing the number of replicas from ‘1’ to ‘0’, to avoid wasting money.</p>
+<p>A separate Paperspace implementation would be to use a ‘notebook’ instead of a ‘deployment’. This allows you control over all the files. I tried both the Windows installation instructions and the Linux ones for AUTOMATIC1111. The former didn’t won’t because of a permission error (I assume Paperspace doesn’t allow installation of third party programs for safety) and the latter didn’t work easily either.</p>
+<p>Fortunately, I found a guide specifically for use on Paperspace notebooks. The installation this guide uses appears to be flexible. You can modify files so it should be possible to use Textual Inversion, Dreambooth, and Aesthetic Gradients. However, using this method could avoid spending money renting a GPU.</p>
+<p>One such method of modifying the installation to include Dreambooth is detailed here: https://github.com/TheLastBen/fast-stable-diffusion.</p>
+<section id="paperspace-conclusion" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="paperspace-conclusion"><span class="header-section-number">7.1.1</span> Paperspace conclusion</h3>
+<p>Their official implementation guide of AUTOMATIC1111’s stable diffusion costs money, cannot be edited, cannot use Aesthetic Gradients, cannot use Dreambooth. I believe it can use textual inversion.</p>
+<p>However, an unofficial guide appears to have the flexibility to use all three finetuning methods and can use free Paperspace GPUs so could have money.</p>
+<p>Unsurprisingly, I prefer the latter.</p>
+</section>
+</section>
+<section id="locally" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="locally"><span class="header-section-number">7.2</span> Locally</h2>
+<p>My laptop is designed to run graphically intensive videos games so it was worth testing if I could do stable diffusion on it.</p>
+<p>Stable Diffusion is recommended only for use with GPUs that have =&gt;10gb of memory. My graphics card, an NVIDIA RTX 3050 Ti, only has 4gb of dedicated GPU memory. My PC has 12gb (total) GPU memory.</p>
+<p>Total GPU memory (in windows) = shared GPU memory + dedicated GPU memory. <br> Shared GPU memory is half of your computer’s RAM. <br> Thus, for me, GPU memory is 16/2 + 4 = 12 gb.</p>
+<p>Unfortunately, it appears that the memory from shared GPU memory is significantly slower than the dedicated memory. This results in a significant performance loss when the dedicated memory is all allocated and shared memory starts being used up.</p>
+<p>As a result, it does not seem that I can run stable diffusion on my own machine. My dedicated memory of only 4gb (albeit also with plenty of RAM) is not enough pending some more thorough investigation of optimisation techniques.</p>
+<p>When I tried generating images and/or using Aesthetic Gradients, I got a memory error like: <br></p>
+<p>“RuntimeError: CUDA out of memory. Tried to allocate 20.00 MiB (GPU 0; 4.00 GiB total capacity; 3.43 GiB already allocated; 0 bytes free; 3.47 GiB reserved in total by PyTorch) If reserved memory is &gt;&gt; allocated memory try setting max_split_size_mb to avoid fragmentation. See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF”</p>
+<p>I tried a number of things to help this. I updated my drivers, moved my default browsing habits off Google Chrome, disabling hardware acceleration on my new browser, webui-user.bat to use –medvram, –lowvram, –always-batch-cond-uncond at command line.</p>
+<p>None of these things allowed me to create an Aesthetic Gradient and generate an image with it.</p>
+</section>
+<section id="deployment-conclusion" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="deployment-conclusion"><span class="header-section-number">7.3</span> Deployment Conclusion</h2>
+<p>I cannot easily use my own machine to do Stable Diffusion with Aesthetic Gradients, even just for small testing. It might be possible with enough VRAM optimisation, but regardless with be very slow. I don’t believe it’s worth the time and or effort to figure it out.</p>
+<p>Instead, I’ll focus on using Paperspace or a service like it. My next step will be to properly implement AUTOMATIC1111’s unofficial paperspace guide which appears to create a implementation that has flexibility to use all three finetuning methods as well as free Paperspace GPUs.</p>
+</section>
+</section>
+<section id="esrgan-upscaling-models" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> ESRGAN (Upscaling) Models</h1>
+<p>ESRGAN are types of neural network models focussed on image and video upscaling. A good wiki for it is here:https://upscale.wiki/wiki/Main_Page, and AUTOMATIC1111’s stable diffusion implementation allows you to use them.</p>
+</section>
+<section id="another-idea-to-do-soundscape-spectrogram-creation" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Another idea to do soundscape spectrogram creation</h1>
+<p>What if we created not images of soundscapes, but animations of them changing? We can create animations by giving a list of prompts and seeing the image change from one to another.</p>
+</section>
+<section id="reference-papers-from-robert" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Reference Papers from Robert</h1>
+<p>Robert kindly sent me some potentially useful references. I had a brief look at them.</p>
+<section id="soundscape_ir-module" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="soundscape_ir-module"><span class="header-section-number">10.1</span> soundscape_IR Module</h2>
+<p>https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13960</p>
+<p>soundscape_IR is (the first) open-source Python toolbox designed for improving results in ML models by using unsupervised source separation (SS) in soundscape information retrieval. It contains a supervised algorithm too. To do so, it uses nonnegative matrix factorization.</p>
+<p>This paper is useful because understanding soundscape separation techniques may lead to some insights into how to generate stable diffusion soundscape spectrograms. Papers like this indicate to me that I need to spend more time learning about computational linear algebra and the signal processing/the properties of sound. Thankfully, it being based in Python and open source means I can play around with it and learn these topics practically.</p>
+</section>
+<section id="computational-bioacoustics-with-deep-learning-a-review-and-roadmap" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="computational-bioacoustics-with-deep-learning-a-review-and-roadmap"><span class="header-section-number">10.2</span> Computational bioacoustics with deep learning: a review and roadmap</h2>
+<p>https://peerj.com/articles/13152/</p>
+<p>The paper is a recent (March 2022) overview about the growth of computational bioacoustics. This is exactly what I need to read: it covers how recent approaches are done bearing in mind all of the advances in various fields and methods (big data, signal processing, machine/deep learning, speech and image processing). As it’s a literature review, it will help a lot with writing my diss, as well as my motivation for using such a novel approach. Also, because deep learning is new to the field, it does well to explain it to people with a biology background, so is easy to understand.</p>
+<p>It outlines the typical bioacoustic classification approach, which I had an implicit understanding of, but is nice to see outlined properly.</p>
+</section>
+<section id="typical-approach" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="typical-approach"><span class="header-section-number">10.3</span> Typical Approach:</h2>
+<ul>
+<li>Uses a common CNN architecture like ResNet, VGGish, Inception and MobileNet. This could be a pretrained model from Google’s AudioSet, (a dataset of manually annotated audio events of humans and animal).</li>
+<li>Uses spectrograms.</li>
+<li>They are usually divided into fixed lengths ranging from 1-10 seconds.</li>
+<li>Spectrograms as three types: standard (linear-frequency), mel, or log-frequency. There are more details about transformations.</li>
+<li>There is no strong consensus on the ‘best’ spectrogram format. Best being relative because it depends on the problem. Usually researchers decide empirically.</li>
+<li>The ML tasks are usually binary classification (e.g.&nbsp;is this sound in the spectrogram? Yes/No) or multi label classification (are any of these sounds from a list in the spectrogram?).</li>
+<li>Uses data augmentation to improve diversity of a small training dataset to be more diverse. Done using noise mixing, time shifting, mixup.</li>
+<li>Other than standard CNNs, a modification called CRNNs are relatively popular. You add a recurrent layer (LSTM or GRU) after the convolution layers.</li>
+<li>Train the model using the standard good practices in deep learning. Model variables varied include Adam, dropout, early stopping, hyperparameters. Reference paper given (Goodfellow, Bengio &amp; Courville, 2016).</li>
+<li>Dataset is split as it usually is in machine learning: by training, validation and testing.</li>
+<li>Performance metrics used are accuracy, precision, recall, F-score, and/or area under the curve (AUC or AUROC).</li>
+<li>Bioacoustic datasets tend to be very unbalanced because some categories/classes have many more entries than another. This is why techniques such as macro-averaging are used. Macro-averaging calculates the model performance for each class and then takes the average of those to give equal weight to each class (Mesaros, Heittola &amp; Virtanen, 2016).</li>
+<li>As a field, computational bioacoustics with deep learning is immature. There are few reference works. There’s a lot of interesting work to be done to adapt the typical (and fast progressing!) deep learning techniques to the specific requirements of bioacoustic analysis.</li>
+</ul>
+<p>The author then comments that the standard recipe works well for many bioacoustic classification tasks, including noisy outdoor sound scenes, but heavy rain and wind remains a problem across all analysis/ML methods, including DL. Also, that while data augmentation of spectrograms is specific to the audio domain and computational bioacoustics, the field’s use of CNNs is a good idea because it follows the advances, practices, and research in CNNs used for standard DL tasks (images, audio, video).</p>
+<p>The typical approach outlined makes a lot of intuitive sense to me; most of the process I have encountered before. I find it interesting that the field mainly uses a image approach for audio classification, not a direct audio approach. I’m not suprised that the field also doesn’t have a strong consensus on the ‘best’ spectrogram format and individuals decide empirically. This is unfortunately often the case in ML, especially as the field progresses too fast. Finally, it’s exciting that the field is immature because there’s some interesting work to be done!</p>
+</section>
+<section id="dataset-synthesissimulation-sim2real" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="dataset-synthesissimulation-sim2real"><span class="header-section-number">10.4</span> Dataset synthesis/simulation (sim2real)</h2>
+<p>There’s a section on this. It’s very useful to see other approaches than mine! <br> sim2real in DL is the creation of synthetic datasets. Data augmentation is editing existing training data, sim2real is creating new training data. Because of this, if there are problematic biases in the training data, sim2real could have the ability to significantly reduce them as creating new data entirely rather than changing existing data is more flexible.</p>
+<p>The issue is whether the synthetic data is as realistic as the real data. The author states three papers using sim2real, that their “results imply that wider use in bioacoustic DL may be productive, even when simulation of the sound types in question is not perfect”.</p>
+<p>Two of these papers are very relevant to my end goal:</p>
+<p>“Simulation is also especially relevant for spatial sound scenes, since the spatial details of natural sound scenes are hard to annotate (Gao et al., 2020; Simon et al., 2021).</p>
+<p>Simulation, often involving composing soundscapes from a library of sound clips, has been found useful in urban and domestic sound analysis (Salamon et al., 2017b; Turpault et al., 2021). Such results imply that wider use in bioacoustic DL may be productive, even when simulation of the sound types in question is not perfect.”</p>
+</section>
+<section id="conclusion-for-now" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="conclusion-for-now"><span class="header-section-number">10.5</span> Conclusion (for now)</h2>
+<p>This paper is extremely long as expected of a thorough lit review. It’s most definitely worth reading in depth.</p>
+<p>It’s conclusion is that developments in DL, data availability, audio hardware, processing power, and demands of national and international biodiversity accounting will benefit Bioacoustics. However, the field must align these developments (especially in DL) towards their specific problems and needs. An example earlier being that CNN research has advanced in DL, but that data augmentation of spectrograms is specific to the audio domain and computational bioacoustics, so the latter must be investigated.</p>
+<p>Reading this paper A: gives me an overview of the field. B: gives me ideas and knowledge on how to do my approach. C: gives me flexibility to find another approach in case my own doesn’t work out.</p>
+<p>There’s many sections of this section indirectly important for me to properly understand. Some of it covers knowledge I’m missing, such as, “Acoustic features: spectrograms, waveforms, and more”, but others cover content I’m familiar with such as data augmentation and pretraining, just not in the context of bioacoustics.</p>
+<p>Lastly, it also contains a section on Spatial acoustics, relevant to our previous approach using stereo data. This fits in case C above. Similarly, here is another paper about using an acoustic vector sensor (similar to stereo data) approach for sound separation. https://asa.scitation.org/doi/full/10.1121/10.0013505</p>
+</section>
+<section id="papers-to-motivate-bioacoustic-classification" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="papers-to-motivate-bioacoustic-classification"><span class="header-section-number">10.6</span> Papers to motivate bioacoustic classification:</h2>
+<p>These two papers would be useful to motivate my approach. Better classification models means better bird density and migration information, means better biodiversity tracking.</p>
+<p>On monitoring of flight calls based on artificial light at night (bird migration): https://onlinelibrary.wiley.com/doi/epdf/10.1111/ibi.12955#</p>
+<p>On estimating the number of birds from audio data, a literature review: https://onlinelibrary.wiley.com/doi/epdf/10.1111/ibi.12944</p>
+</section>
+</section>
+<section id="work-done" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Work Done:</h1>
+<ul>
+<li>Almost finished fast.ai lesson 11.</li>
+<li>Worked on fast.ai lesson 9B, a mathematical description of Stable Diffusion.</li>
+<li>Found link on Stable diffusion tips: https://www.reddit.com/r/StableDiffusion/comments/yap62n/tips_tricks_and_treats/.</li>
+<li>Found link on helps with prompt creation https://openart.ai/promptbook/</li>
+<li>Paper on Neural Audio Compression https://arxiv.org/abs/2210.13438</li>
+<li>Guide on How to normalize spectrograms https://enzokro.dev/normalizingSpectrogramsPost.html</li>
+<li>Google team paper Multi-instrument Music Synthesis. Audio synthesis techniques may be useful for my stable diffusion spectrogram synthesis approach https://arxiv.org/abs/2206.05408</li>
+</ul>
+</section>
+<section id="to-do" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> To do</h1>
+<ul>
+<li>Get AUTOMATIC1111’s stable diffusion to work on Paperspace</li>
+<li>Finish fast.ai lesson 11 and 9B, as well as the normal lesson</li>
+<li>Read the Computational bioacoustics literature review again</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

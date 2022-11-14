@@ -9,7 +9,7 @@
 <meta name="author" content="Adnan Jinnah">
 <meta name="dcterms.date" content="2022-11-08">
 
-<title>RvCode - fast.ai Lesson 12</title>
+<title>RvCode - fast.ai Lesson 13</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">fast.ai Lesson 12</h1>
+      <h1 class="title">fast.ai Lesson 13</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">fastai</div>
               </div>
@@ -137,7 +137,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro"><span class="toc-section-number">1</span>  Intro</a></li>
   <li><a href="#lesson-overview" id="toc-lesson-overview" class="nav-link" data-scroll-target="#lesson-overview"><span class="toc-section-number">2</span>  Lesson Overview</a></li>
   <li><a href="#lecture-notes" id="toc-lecture-notes" class="nav-link" data-scroll-target="#lecture-notes"><span class="toc-section-number">3</span>  Lecture Notes</a></li>
-  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links"><span class="toc-section-number">4</span>  Links</a></li>
+  <li><a href="#reviewing-what-a-linear-model-and-relu-is" id="toc-reviewing-what-a-linear-model-and-relu-is" class="nav-link" data-scroll-target="#reviewing-what-a-linear-model-and-relu-is"><span class="toc-section-number">4</span>  Reviewing what a linear model and ReLu is:</a></li>
+  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links"><span class="toc-section-number">5</span>  Links</a></li>
   </ul>
 </nav>
     </div>
@@ -156,22 +157,45 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="lecture-notes" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Lecture Notes</h1>
+<p>watch 3blue1brown https://www.youtube.com/watch?v=tIeHLnjs5U8&amp;list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&amp;index=4 on neural netwrosk!</p>
 <p>03_backprop</p>
-<p>… we load in mnist data as tensors</p>
-<p>start by creating the basic architecture for a neural net.</p>
-<p>reviewing what a basic net is and why:</p>
-<p>start by considering a linear model of a single pixel from an mnist picture y value is likelihood of a classification of being a digit ‘3’. X is the pixel. The brighter the pixel is, the higher likelihood of being 3. a linear model is a straight line, which isnt very useful. it cant add additional lines, because it will just result in another line. instead to create a curve, we create a line RElu line! Everything to the left of the RELU point is left alone and everything to the right is changed. we can just keep adding more RELUs in order to change the curvature. eventually creating any curve we want!</p>
-<p>In reality, we dont have one pixel to classify, but many. Multidimensional spaces. We create complex 3d curves by adding RElu curves.</p>
-<p>Ahead of time we decide how many these RElu lines to add, e.g.&nbsp;10. to add them, we need martix multi.</p>
-<p>Mnist: 50000 rows by 784 columns. To add nodes: multi by 784 rows and 10 columns. Each row in 50000 is one image’s pixels. Our output is 50000 by 10. Each row on the output is for an image. The first element is the probability of being ‘1’, the second ‘2’, etc. Not sure if the second matrix has 10 columns one for each classifcaiton or one for each node?</p>
-<p>In reality, for 50 hidden nodes: 50000x784 input multi by 784x50 to create 50 hidden layers, then trucated at 0, then 50x10 to create 10 outputs. The previous process is done in these two matrix mult steps.</p>
+</section>
+<section id="reviewing-what-a-linear-model-and-relu-is" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Reviewing what a linear model and ReLu is:</h1>
+<p>Start by considering a linear model of a single pixel from an mnist image. The y value is likelihood of a image being a digit ‘3’. The x value is the value of the pixel from 0-63. A higher x value means a higher brightness. A linear model’s predictions are just a straight line: it predicts higher x values (higher brightnesses) to have a higher likelihood of being part of an image that is the digit ‘3’. This isn’t particularly useful. We cannot form curvature from a linear model from adding additional linear lines because a linear line plus a linear line is just another linear line. So instead, we add a ReLU! Everything to the left of the ReLU point is crushed to 0, and everything to the right is left alone. We can just keep adding more ReLUs in order to change the curvature to fit any arbitrary curve!</p>
+<p>In reality, we don’t just use one pixel from an image to classify it. We use many, which create multidimensional spaces instead of 2D ones. In this case, we analogously create complex multidimensional curves by adding ReLus togther.</p>
+<p>Ahead of time we decide how many of these Relu lines to add. To add them, we require matrix multiplication.</p>
+<p>I don’t understand this entirely. In our MLP, we go on to create a network architecture Linear,ReLu,Linear. This makes sense because we couldn’t do Linear,Linear as that’s just Linear, but this concept of progressively adding ReLus together I.E, ReLu,ReLu,ReLu doesn’t make sense? Maybe what this actually means is “if you do enough Linear,ReLu pairs,you can create any arbitrary curve.” This makes sense because imagining an empty 2D graph, you create a linear line, then apply ReLu to it to get the ReLu line. Add this to other linear lines with ReLu applied then you create any curve. Yeah, by “adding ReLus together”, we actually mean “adding Linear,ReLu” pairs together!</p>
+<p>Mnist:</p>
+<p>To add nodes: multi by 784 rows and 10 columns. Each row in 50000 is one image’s pixels. Our output is 50000 by 10. Each row on the output is for an image. The first element is the probability of being ‘1’, the second ‘2’, etc. Not sure if the second matrix has 10 columns one for each classifcaiton or one for each node?</p>
+<p>11:40 in Video. In reality, for 50 hidden nodes: We multiply a 50000x784 matrix by a 784x10 matrix. This is because if we take row one, the 784 pixel values of the first image, we multiply them by the 784 values in the 784x10 matrix. This matrix multiplication gives us our output matrix which is 50000x10. The first multiplication is in the first row first column of the output. It’s the first of 10 elements in that first row. If this was a linear model, each of the 10 elements per row in the output matrix represent probabilities. 0th element being for the digit 0, 1st element for the digit 1 etc. This is why the second matrix has to be 784x10, because only then do we get 10 elements per row in the output matrix. The second matrix has 10 columns. Each column allowing us to weight the 784 input pixels.</p>
+<p>But this was for a linear model, so I think we do something more complex. Instead we do matrix multiplication twice to get our output matrix. 50000x784 matrix multiplied by 784x50 matrix. This creates 50 hidden layers. Then we truncate those at zero? Then we multiply the resulting 50000x50 matrix by a 50x10 matrix to create our output 50000x10 matrix!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-11-08-L13_files/figure-html/image.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
-<p>W starts with random values. w is 50000x50 random values and we add biases, start them at 0. one for each output so 50 of them. w2 is layer two, 50 hidden layers, and 10 classifcation digits, so 50x10. But we’re not going to do cross entropy classifcation yet, we’ll use MSE isntead, so only one output, so 50x1. The one output is just what number to we tink it is. We don’t give 10 probabilities by one value of what the model think it is. We compare these to the real labels using MSE. This is stupid because it says 9 is further away from 2 on correctness but that’s dumb. (I guess 8 and 9 are less wrong?).</p>
+<p>W starts with random values. w is 50000x50 random values and we add biases, start them at 0. one for each output so 50 of them. w2 is layer two, 50 hidden layers, and 10 classifcation digits, so 50x10. But we’re not going to do cross entropy classifcation yet, we’ll use MSE isntead, so only one output, so 50x1.</p>
+<p>The one output is just what number to we tink it is. We don’t give 10 probabilities by one value of what the model think it is. We compare these to the real labels using MSE. This is stupid because it says 9 is further away from 2 on correctness but that’s dumb. (I guess 8 and 9 are less wrong?).</p>
+<p>x_valid is 10000x784 through weights and baises 10000x50 hidden activations/layers now through RElu, anything under 0 is 0.</p>
+<p>an NLP is just first linear layer (w1,b1), then relu, then second linear layer (w2,b2).</p>
+<p>and we get 10000x1 back, because thats prediction of a digit for each of the 10000 entries.</p>
+<p>res is 10000 res-y_valid gives 10000x10000! why? because we start at the last dim and go R to L. 10000 and 1 is compatable, so that 1 will be braodcast along the 10000 values, giving 10000 values.</p>
+<p>more to the left, there is nothing, so it inserts a 1, which makes 1 and 10000 compatable, so is broadcast among the 10000 and we get with with another 100000</p>
+<p>we simply need to add a unit axis ourselves to the right to fix this! or just remove the 1 from 10000x1, .squeeze removes all unit dimensions. now we can get 10000 values as we want.</p>
+<p>turn y_valid etc into floats since we’re suing MSE.</p>
+<p>mse subtracts, ** 2 and gets the mean, now we have a loss function!</p>
+<p>Now we need gradients.</p>
+<p>Gradients are slopes. Consider a neural network. It contains a matrix of inputs, and a matrix of weights, then puts the result into a loss function, which we cmpare to the actual.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="attachment:image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>W starts with random values. w is 50000x50 random values and we add biases, start them at 0. one for each output so 50 of them. w2 is layer two, 50 hidden layers, and 10 classifcation digits, so 50x10. But we’re not going to do cross entropy classifcation yet, we’ll use MSE isntead, so only one output, so 50x1.</p>
+<p>The one output is just what number to we tink it is. We don’t give 10 probabilities by one value of what the model think it is. We compare these to the real labels using MSE. This is stupid because it says 9 is further away from 2 on correctness but that’s dumb. (I guess 8 and 9 are less wrong?).</p>
 <p>x_valid is 10000x784 through weights and baises 10000x50 hidden activations/layers now through RElu, anything under 0 is 0.</p>
 <p>an NLP is just first linear layer (w1,b1), then relu, then second linear layer (w2,b2).</p>
 <p>and we get 10000x1 back, because thats prediction of a digit for each of the 10000 entries.</p>
@@ -203,18 +227,10 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p>forward pass calculates the loss. (loss = res.pow … should be diff.pow…) the loss is the outputput-target squared etc</p>
-<p>backwards pass we store the graidents of each later, in the layer itself. out.g does so is 2 * diff and diff squared, and divide by inp shape is meme gradient of a linear layer, we need the gradients of the outputs to find it because of the chain rule.</p>
+<p>backwards pass we store the graidents of each later, in the layer itself. out.g does so is 2 * diff and diff squared, and divide by inp shape is mean gradient of a linear layer, we need the gradients of the outputs to find it because of the chain rule.</p>
 <p>for w.g., we got the input weights, multi them by the outputs?</p>
-<p>we need a better way to explore what things are doing since its hard to do it cell by cell. we use a debugger, pbd to do so, it tells debugger to stop exe code at that line, it creates a break point.</p>
-<p>python debugger is SUPER important to understand. you should look up at python pdb tutotial</p>
-<p>print is p in it. p inp.shape</p>
-<p>we can ignore the p if the variable name isn’t one of the debugger commands.</p>
 <p>unseuzeze (-1) adds an axis to the end?</p>
 <p>each image inivudally contributes to the dervitaitve so we want to add them al lup. the derviatve of a sum of functions is the same of the dervtiatve of the sum of the dertative of the functions. so we do that!</p>
-<p>this is a good use case for einsum</p>
-<p>c to continue to the next line, we go back to lin grad because its called again.</p>
-<p>w tells us “where am i?” how did we get to this break line? n goes to the right line</p>
-<p>c for continue to the end?</p>
 <p>x_train.zero_() sets it all to zero for us so we can rerunthings.</p>
 <p>we realise with debug that an einsum can do this. rewatch this part carefully</p>
 <p>we can replace some of the code with a matrix multiply!</p>
@@ -238,15 +254,12 @@ ul.task-list li input[type="checkbox"] {
 <p>There’s often opptunrities to manually speed things up. in Mse, inp.suqece()-targ .. is done twice. at memory cost, we can see this calculation as a new variable, diff, as self.diff, and remove the redundant calculation and just use it directly.</p>
 <p>We can do this often in neural nets. A comprise behind losing memory for less computation.</p>
 <p>Thankfully Pytorch has written classes for us which now we’ve written we can use. They’re called nn.X. So we create our classes inheiriting from nn.Module.</p>
-<p>we need to define forwards, but dont need to define backwards becuase pytorch knows deriviates of functions and the chain rule.</p>
-<p>we previously stored our gradients in .g, but pytorch its .grad</p>
-<p>We’re now upto the point wher we can train a model! new notebook!</p>
-<p>Firstly lets improve our loss function since MSE was awful. In part 1, there’s an extropy example excel file.</p>
+<p>04_minibatch_training</p>
+<p>EXCEL FILE.</p>
 <p>For MSE, we simply output the most likely (highest probabilitiy) digit the model predicts from an image.</p>
 <p>For cross entropy, we instead output 10 numbers for each image. Thats the probability that the image is ‘1’,‘2’…‘10’.</p>
 <p>The y matrix (containing the correct labels) are now instead one-hot-encoded rows of each label.</p>
 <p>E.g. y^ = ‘0.99,0,0,0,0.01..’ y = ‘1,0,0,0..’ gives low cross entropy loss!</p>
-<p>We dont even need to one-hot-encode the y matrix. instead we can just directly store the target digit as an interger and use it as if it was one-hot-encoded.</p>
 <p>For softmax: say we have 5 categories to predict. The network gets an image to predict. it outputs 5 values, these would be probabilities in the previous example but here they are not. Then we raise each value to e, and sum them Then we divide each value by the sum. This gives us our softmaxes. We will get 5 of them. Softmaxes are probability predictions. They add up to one.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -259,40 +272,10 @@ ul.task-list li input[type="checkbox"] {
 <p>For the loss func, we compare those softmaxes (probability) to the one hot encoded label. we calculate x-entropy for each softmax. It’s log(softmax) * actual. Actual is either 0 or 1. Because only one actual is 0, only one x-entropy is non zero, so the sum of x-entropies is just that one x-entropy.</p>
 <p>In this special case where the actuals are one-hot-encoded: Doing actuals * log(softmax) is identicle to simply indexing into a category row and looking at its softmax.</p>
 <p>This is review. Go back to part 1 for more detail.</p>
-<p>Back to the notebook.</p>
-<p>In cross-entropy we dont want softmax but log(softmax). When def logmax, we want to leave a unit axis to avoid the other broadcasting issue we got earlier.</p>
-<p>log_softmax(pred)</p>
-<p>Key maths to know is log and exponent rules. THey come into neural nets all the time.</p>
-<p><img src="2022-11-08-L13_files/figure-html/image-6.png" class="img-fluid" alt="image-6.png"> We need them because plus and minuses are a lot faster than devisions or multiplication computationally.</p>
-<p>We have a division being logged, and exp and log are opposites. So we simplify.</p>
-<p>Another cool trick: log of a sum.</p>
-<p>x.exp() is a big number, there’s not much precision of big numbers, this leads to derivatives being inaccurate. So what we do is calculate the max of x, so call it A.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="2022-11-08-L13_files/figure-html/image-8.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image-8.png</figcaption><p></p>
-</figure>
-</div>
-<p>So rather than doing log(sum(e*x)), instead define a as max of all x values. If we then subtract a from all the x values, then none of the values are big. This would give us a different result.</p>
-<p>So we get e^x1-a, e^x2-a, e^x3-a. This is e<sup>x1/e</sup>a, e<sup>x2/e</sup>a, e<sup>x3/e</sup>a, 1/e<sup>a(e</sup>x1+e<sup>x2+e</sup>x3) Now multiply it by e^a, so e^a(log(sum(e<em>x))) = log(sum(e</em>x)) <img src="2022-11-08-L13_files/figure-html/image-9.png" class="img-fluid" alt="image-9.png">!</p>
-<p>Then we can turn the e multiplication into a log sum.</p>
-<p>This trick is called the logsumexp.</p>
-<p>Now we rewrite log_softmax using pytorch’s version of it.</p>
-<p>Our outputs are not one-hot-encoded, they are just interger indices, so we can write cross entropy simply as -log(p)</p>
-<p>How do we do this in Pytorch? 5 0 and 4 are the first 3 labels/y values. the 1st prediction is in the 0th row, and the y value is 5, so it’s [0,5] 2nd pred in 2nd row, y val is 0, so it’s [1,0]</p>
-<p>If we index using two lists, [0,1,2] and [:3], it returns the same thing!</p>
-<p>Both give us what we need for cross entropy loss. So we take range and target, - mean gives us cross entropy loss.</p>
-<p>Pytroch calls this negative log likelihood loss. If we take it and pass it to log softmax, then we get the loss. This combination is called F.cross_entropy.</p>
-<p>There’s a lot of confusing things going on here. HW: implement F.log_softmax, F.nll_loss, F.cross_entropy and compare it to Pytorch’s values.</p>
-<p>Now we can finally create a training loop. We get 64x10, 64 images each with 10 predictions.</p>
-<p>For each of our predictions, for each row, we see what the highest number is. For 0th, it’s 0.10, which is the 3th index. The function to find the index of the highest number per row is argmax. preds.argmax</p>
-<p>We don’t need this for loss, but accuracy. random weights no training give 0.09 accuracy. To understand the training cell, break it all up and put it together again.</p>
-<p>gradients of weights and biases _ means do it in place. it sets to 0.</p>
-<p>we run, and see accuracy improve from 0.09 to 0.96 on training set after 3 epochs!</p>
-<p>HW: Key basics pieces are in place. Recreate without peaking as much as possible. Matrix multiply, forward and backwards passes, steps through passes, .forward and .backwards. At the very least, pick out some piece, or look through these notebooks very carefully.</p>
+<p>END EXCEL FILE. Back to the notebook.</p>
 </section>
-<section id="links" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Links</h1>
+<section id="links" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Links</h1>
 <ul>
 <li>As I am doing this course as it is released privately live, I cannot share links to the lesson.</li>
 </ul>

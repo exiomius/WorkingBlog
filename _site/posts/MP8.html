@@ -255,7 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="intro" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Intro</h1>
-<p>(This post is in progress!) The eighth post from a series of posts about my Masters project with the Physics Department at Durham University.</p>
+<p>The eighth post from a series of posts about my Masters project with the Physics Department at Durham University.</p>
 </section>
 <section id="week-overview" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Week Overview</h1>
@@ -268,6 +268,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 data-number="3"><span class="header-section-number">3</span> Meeting:</h1>
 <section id="during-the-meeting-we-discussed" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="during-the-meeting-we-discussed"><span class="header-section-number">3.1</span> During the meeting we discussed:</h2>
+<ul>
+<li>I used square windows implicitly in my spectrogram creation. I used blocks of 256, meaning splitting the audio array X(t) into windows of 256 values.</li>
+<li>Changing window lengths affects the time resolution and frequency resolution tradeoff.</li>
+<li>Instead of taking square windows, we could do others. For example, a Gaussian window. The latter is known as the Gabor transform, and I recall a paper in the project’s reference about it. A another transform to look into is the wavelit transform.</li>
+<li>I should compare my spectrogram creation with the predefined ones. I.E, for the 7 second case I did last week, or for even simpler cases.</li>
+<li>On why there might be blurryness in my 7 second spectrogram. Imagine a sine wave with finite length. In the Fourier equation maths, the omega components of it will have a create peak at the sine wave’s frequency, but also at other places. This might be a contributing factor, but looking at other predefined spectrogram functions might yield some clues to do with my implementation.</li>
+<li>Another reason might be because of the existence of two waves superimposing. Moire’s patterns are an example of this. Maybe check if there is blurryness in a one sine wave spectrogram.</li>
+<li>I could do a single sine wave Fourier transform and Spectrogram analytically, and compare it to my version to check for correctness.</li>
+<li>For the fft, don’t code it yourself. Use Scipy’s implementation. Code the spectrogram yourself but not the fft.</li>
+<li>We discussed the standard approach of audio to image for CNN use.</li>
+<li>Why use an image in the firstplace, as in maybe the classification can be done without an CNN using the Fourier coefficients instead.</li>
+<li>Very interestingly, why are we using spectrograms to represent the audio? Spectrograms, because of their mod squared, lose the phase information. This is necessary for humans to visually understand the audio image, but not for computers. We could use something other than a standard spectrogram to retain the phase information. This would theoretically make reconstructing the images possible, and can let us tell directionality for spectrogram creation.</li>
+<li>One thing we could try is, instead of giving a CNN the one standard spectrogram, we give two spectrograms. One is the normal spectrogram, representing Amplitude and Time. The other is representing phase and time. - The problem with representing phase visually is that a colour scheme from 0-2pi will be continuous for that interval, but after we go over 2pi, for example, as 2.1pi = .1pi, there is discontinuity in the colour scheme. To remedy this, we could supply three spectrograms. Two for the phase, to allow for a continuous phase colouring scheme.</li>
+<li>The main motivation behind the stable diffusion approach. If I used the ‘standard’ method of finding audio files of different things online, say of a bird’s song and a forest environment, then combined them together, humans will be able to tell their combination is artificial. There’s a lot of changes you need to make, some very subtle, to make the combination match. These are very important to create good training data for ML models. In comparison, if I gave SD images of chairs and bears, it can create a very convincing image of a bear sitting on a chair. It can figure out these subtleties and create realistic images. SD could create realistic and labeled soundscapes in a way other methods cannot. Also can do directionality and the basic approach cannot.</li>
+<li>I am interested in audio directionality because I want SD prompts to be able to incorporate them. Say “this bird singing at 30 degrees, another bird singing at 80 degrees”. In general, the more variation we have in training data, the better an ML model will be. Directionality is important for this. Consequently, using spectrogram or spectrogram-like images that store directionality is needed.</li>
+</ul>
 </section>
 </section>
 <section id="code" class="level1" data-number="4">
